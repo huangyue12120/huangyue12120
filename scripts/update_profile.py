@@ -23,6 +23,7 @@ TIMEZONE = ZoneInfo("Asia/Shanghai")
 CARD_INNER_WIDTH = 42
 CAT_WIDTH = 15
 REPO_WIDTH = CARD_INNER_WIDTH - CAT_WIDTH - 1
+CAT_ROTATION_OFFSET = 3
 
 GRAPHQL_QUERY = """
 query ProfileSignals(
@@ -121,7 +122,7 @@ CAT_VARIANTS: tuple[tuple[str, tuple[str, ...]], ...] = (
             "   /###^###\\   ",
             "  /#########\\  ",
             " (###########) ",
-            "  \\###|###/   ",
+            "  \\###|###/    ",
             "   `--m-m--'   ",
             "  [BLACK CAT]  ",
         ),
@@ -135,7 +136,7 @@ CAT_VARIANTS: tuple[tuple[str, tuple[str, ...]], ...] = (
             "   /   ^   \\   ",
             "  /         \\  ",
             " (           ) ",
-            "  \\   |   /   ",
+            "  \\   |   /    ",
             "   `--m-m--'   ",
             "  [WHITE CAT]  ",
         ),
@@ -144,12 +145,12 @@ CAT_VARIANTS: tuple[tuple[str, tuple[str, ...]], ...] = (
         "COW CAT",
         (
             "     /\\_/\\     ",
-            "    /@@   @\\    ",
-            "   ( o   o )    ",
+            "    /@@   @\\   ",
+            "   ( o   o )   ",
             "   /   ^   \\   ",
             "  / @@   @  \\  ",
             " (    @@     ) ",
-            "  \\ @ | @@ /  ",
+            "  \\ @ | @@ /   ",
             "   `--m-m--'   ",
             "   [COW CAT]   ",
         ),
@@ -159,13 +160,83 @@ CAT_VARIANTS: tuple[tuple[str, tuple[str, ...]], ...] = (
         (
             "     /\\_/\\     ",
             "    /#####\\    ",
-            "   ( #o#o# )    ",
+            "   ( #o#o# )   ",
             "   /   ^   \\   ",
             "  /         \\  ",
             " (    ###    ) ",
-            "  \\   |   /   ",
+            "  \\   |   /    ",
             "   `--m-m--'   ",
             " [SIAMESE CAT] ",
+        ),
+    ),
+    (
+        "SLEEPY CAT",
+        (
+            "               ",
+            "      |\\       ",
+            "  /\\_/  \\___   ",
+            " ( -.-     `\\  ",
+            "  > ^ <  _  /  ",
+            " (______/ (_/  ",
+            "    z  z       ",
+            "     z         ",
+            " [SLEEPY CAT]  ",
+        ),
+    ),
+    (
+        "BOX CAT",
+        (
+            "  +---------+  ",
+            "  |  /\\_/\\  |  ",
+            "  | ( o.o ) |  ",
+            "  |  > ^ <  |  ",
+            "  |         |  ",
+            "  +---------+  ",
+            "      ||       ",
+            "   do not ship ",
+            "   [BOX CAT]   ",
+        ),
+    ),
+    (
+        "PEEK CAT",
+        (
+            "               ",
+            "               ",
+            "   |\\     /|   ",
+            "   | \\___/ |   ",
+            "   |  o o  |   ",
+            "---|   ^   |---",
+            "   |______/    ",
+            "               ",
+            "  [PEEK CAT]   ",
+        ),
+    ),
+    (
+        "KEYBOARD CAT",
+        (
+            "     /\\_/\\     ",
+            "    ( o.o )    ",
+            "     > ^ <     ",
+            "    /|   |\\    ",
+            " __/ |___| \\__ ",
+            " | q w e r t | ",
+            " | a s d f g | ",
+            " `-----------' ",
+            " [KEYBOARD CAT]",
+        ),
+    ),
+    (
+        "STRETCH CAT",
+        (
+            "               ",
+            "  /\\_/\\        ",
+            " ( o.o )____   ",
+            "  > ^ <     `-.",
+            " /            )",
+            "(__/------(__/ ",
+            "               ",
+            "      ~~~      ",
+            " [STRETCH CAT] ",
         ),
     ),
 )
@@ -300,7 +371,9 @@ def weekly_card(collection: dict[str, Any], windows: DateWindows) -> str:
     active_days = sum(1 for count in daily.values() if count)
     busiest = max(daily.items(), key=lambda item: (item[1], item[0]), default=None)
     iso_week = windows.week_end.isocalendar().week
-    cat_name, cat = CAT_VARIANTS[iso_week % len(CAT_VARIANTS)]
+    cat_name, cat = CAT_VARIANTS[
+        (iso_week + CAT_ROTATION_OFFSET) % len(CAT_VARIANTS)
+    ]
 
     maximum = repos[0][1] if repos else 0
     repo_lines: list[str] = []
