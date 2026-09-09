@@ -45,6 +45,13 @@ class ProfileUpdateTests(unittest.TestCase):
                 self.assertEqual({len(line) for line in art}, {PROFILE.CAT_WIDTH})
                 self.assertIn(name, art[-1])
 
+    def test_reading_cat_is_centered_as_one_pose(self) -> None:
+        reading = dict(PROFILE.CAT_VARIANTS)["READING CAT"][:-1]
+        occupied = [line for line in reading if line.strip()]
+        left_margin = min(len(line) - len(line.lstrip()) for line in occupied)
+        right_margin = min(len(line) - len(line.rstrip()) for line in occupied)
+        self.assertLessEqual(abs(left_margin - right_margin), 1)
+
     def test_updating_one_scope_preserves_the_other(self) -> None:
         source = (ROOT / "draft" / "files" / "README.md").read_text(encoding="utf-8")
         weekly_cell = PROFILE.card_cell(
@@ -66,15 +73,32 @@ class ProfileUpdateTests(unittest.TestCase):
         ]
         self.assertEqual(PROFILE.longest_streak(days), 2)
 
-    def test_weekly_summary_uses_singular_words(self) -> None:
-        collection = dict(self.user["weekly"])
-        collection["totalCommitContributions"] = 1
-        collection["commitContributionsByRepository"] = [
-            collection["commitContributionsByRepository"][0]
-        ]
+    def test_weekly_footer_is_derived_from_contributions(self) -> None:
+        collection = {
+            "totalCommitContributions": 1,
+            "commitContributionsByRepository": [
+                {
+                    "repository": {"name": "one-repo"},
+                    "contributions": {
+                        "nodes": [
+                            {
+                                "occurredAt": "2026-09-03T10:00:00Z",
+                                "commitCount": 1,
+                            }
+                        ]
+                    },
+                }
+            ],
+        }
         card = PROFILE.weekly_card(collection, self.windows)
-        self.assertIn("summary: 1 commit across 1 repo", card)
+        self.assertIn("average: 1.0 commits / active day", card)
+        self.assertIn("top share: 100% · one-repo", card)
 
+    def test_toolbox_uses_repository_languages(self) -> None:
+        rendered = PROFILE.toolbox(self.user["repositories"])
+        self.assertIn("`Python ×2`", rendered)
+        self.assertIn("`Markdown ×2`", rendered)
+        self.assertIn("`Shell ×1`", rendered)
 
 if __name__ == "__main__":
     unittest.main()

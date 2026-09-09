@@ -113,16 +113,21 @@ class DateWindows:
 
 
 def cat_variant(name: str, *pose: str) -> tuple[str, tuple[str, ...]]:
-    """Build one fixed-size cat pose and reject art that could shift the card."""
+    """Center a complete pose as one block inside the fixed cat canvas."""
     if len(pose) != 8:
         raise ValueError(f"{name} must contain exactly 8 pose lines")
-    lines = (*pose, f"[{name}]")
-    for index, line in enumerate(lines, start=1):
+    pose_lines = tuple(line.rstrip() for line in pose)
+    for index, line in enumerate(pose_lines, start=1):
         if len(line) > CAT_WIDTH:
             raise ValueError(
                 f"{name} line {index} exceeds {CAT_WIDTH} characters: {line!r}"
             )
-    return name, tuple(line.center(CAT_WIDTH) for line in lines)
+    block_width = max(len(line) for line in pose_lines)
+    left_margin = (CAT_WIDTH - block_width) // 2
+    centered_pose = tuple(
+        (" " * left_margin + line).ljust(CAT_WIDTH) for line in pose_lines
+    )
+    return name, (*centered_pose, f"[{name}]".center(CAT_WIDTH))
 
 
 CAT_VARIANTS: tuple[tuple[str, tuple[str, ...]], ...] = (
@@ -638,7 +643,11 @@ def weekly_card(collection: dict[str, Any], windows: DateWindows) -> str:
     )
 
     lines = [top_border(f"WEEKLY SIGNAL · W{iso_week:02}")]
-    lines.append(full_row("observed public commit activity"))
+    lines.append(
+        full_row(
+            f"{windows.week_start.isoformat()} -> {windows.week_end.isoformat()} · UTC+8"
+        )
+    )
     lines.append(
         "├" + "─" * CAT_WIDTH + "┬" + "─" * REPO_WIDTH + "┤"
     )
@@ -647,20 +656,15 @@ def weekly_card(collection: dict[str, Any], windows: DateWindows) -> str:
     lines.append(
         "├" + "─" * CAT_WIDTH + "┴" + "─" * REPO_WIDTH + "┤"
     )
-    commit_word = "commit" if total == 1 else "commits"
-    repo_word = "repo" if len(repos) == 1 else "repos"
+    average = total / active_days if active_days else 0.0
+    top_share = round(repos[0][1] / total * 100) if repos and total else 0
+    top_name = repos[0][0] if repos else "--"
     lines.append(
-        full_row(f"summary: {total} {commit_word} across {len(repos)} {repo_word}")
+        full_row(f"average: {average:.1f} commits / active day")
     )
-    lines.append(
-        full_row(
-            f"window: {windows.week_start.isoformat()} -> "
-            f"{windows.week_end.isoformat()}"
-        )
-    )
+    lines.append(full_row(f"top share: {top_share}% · {top_name}"))
     lines.append(bottom_border())
     assert_card_shape(lines)
-    # Keep the selected name available to tests and future copy changes.
     assert cat_name in cat[-1]
     return "\n".join(lines)
 
@@ -693,14 +697,35 @@ def longest_streak(days: Iterable[tuple[date, int]]) -> int:
     return longest
 
 
-def language_stats(repositories: dict[str, Any]) -> tuple[int, list[tuple[str, int]]]:
+def language_counts(repositories: dict[str, Any]) -> Counter[str]:
     counts: Counter[str] = Counter()
     for repository in repositories.get("nodes") or []:
         language = repository.get("primaryLanguage") or {}
         name = language.get("name")
         if name:
             counts[str(name)] += 1
+    return counts
+
+
+def language_stats(repositories: dict[str, Any]) -> tuple[int, list[tuple[str, int]]]:
+    counts = language_counts(repositories)
     return sum(counts.values()), counts.most_common(3)
+
+
+def toolbox(repositories: dict[str, Any]) -> str:
+    counts = language_counts(repositories)
+    languages = " · ".join(
+        f"`{name} ×{count}`" for name, count in counts.most_common()
+    )
+    if not languages:
+        languages = "`no primary language reported`"
+    return "\n\n".join(
+        (
+            f"Public repository languages: {languages}",
+            "Profile automation: `Python` · `GraphQL` · `GitHub Actions`",
+            "Profile format: `Markdown` · `SVG`",
+        )
+    )
 
 
 def yearly_card(
@@ -718,11 +743,11 @@ def yearly_card(
         return f"{label:<23}{str(value):>19}"
 
     body = [
-        metric("public commits", commits),
+        metric("profile commits", commits),
         metric("active repositories", len(repos)),
-        metric("public active days", active_days),
+        metric("profile active days", active_days),
         metric("longest streak", f"{streak} days"),
-        metric("most active repo", top_repo),
+        metric("top repository", top_repo),
         metric("language-tagged repos", language_total),
     ]
     for index in range(3):
@@ -736,11 +761,15 @@ def yearly_card(
             body.append(f"language {index + 1:02}  --")
 
     lines = [top_border(f"YEARLY ORBIT · {windows.as_of.year}")]
-    lines.append(full_row("year-to-date / learning log"))
+    lines.append(
+        full_row(
+            f"{windows.year_start.isoformat()} -> {windows.week_end.isoformat()} · UTC+8"
+        )
+    )
     lines.append(full_divider())
     lines.extend(full_row(item) for item in body)
     lines.append(full_divider())
-    lines.append(full_row("source: public GitHub activity"))
+    lines.append(full_row("source: GitHub contribution graph"))
     lines.append(full_row(f"through: {windows.week_end.isoformat()} · UTC+8"))
     lines.append(bottom_border())
     assert_card_shape(lines)
@@ -776,6 +805,15 @@ def replace_region(document: str, name: str, replacement: str) -> str:
     return pattern.sub(f"{start}\n{replacement}\n    {end}", document)
 
 
+def replace_toolbox(document: str, replacement: str) -> str:
+    start = "<!-- TOOLBOX_START -->"
+    end = "<!-- TOOLBOX_END -->"
+    pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
+    if len(pattern.findall(document)) != 1:
+        raise RuntimeError("expected exactly one toolbox marker pair")
+    return pattern.sub(f"{start}\n{replacement}\n{end}", document)
+
+
 def main() -> int:
     args = parse_args()
     windows = DateWindows.ending_before(args.as_of)
@@ -801,6 +839,7 @@ def main() -> int:
             "YEARLY",
             card_cell(yearly_card(user["yearly"], user["repositories"], windows)),
         )
+        updated = replace_toolbox(updated, toolbox(user["repositories"]))
 
     if updated != original:
         args.readme.write_text(updated, encoding="utf-8")
