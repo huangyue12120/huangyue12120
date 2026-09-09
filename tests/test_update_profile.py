@@ -36,7 +36,9 @@ class ProfileUpdateTests(unittest.TestCase):
         self.assertEqual({len(line) for line in yearly}, {44})
 
     def test_every_cat_fits_the_fixed_art_slot(self) -> None:
-        self.assertEqual(len(PROFILE.CAT_VARIANTS), 9)
+        self.assertEqual(len(PROFILE.CAT_VARIANTS), 29)
+        names = [name for name, _ in PROFILE.CAT_VARIANTS]
+        self.assertEqual(len(names), len(set(names)))
         for name, art in PROFILE.CAT_VARIANTS:
             with self.subTest(cat=name):
                 self.assertEqual(len(art), 9)
@@ -53,7 +55,7 @@ class ProfileUpdateTests(unittest.TestCase):
         old_yearly = source.split("<!-- YEARLY_SIGNAL_START -->", 1)[1]
         new_yearly = updated.split("<!-- YEARLY_SIGNAL_START -->", 1)[1]
         self.assertEqual(old_yearly, new_yearly)
-        self.assertIn("[SLEEPY CAT]", updated)
+        self.assertIn("[READING CAT]", updated)
 
     def test_longest_streak_resets_on_empty_day(self) -> None:
         days = [
