@@ -48,15 +48,15 @@ The placeholders below are just placeholders — swap in real numbers once the a
       <pre>╭─ WEEKLY SIGNAL · W37 ────────────────────╮
 │observed public commit activity           │
 ├───────────────┬──────────────────────────┤
-│               │01 huangyue12120 █████   1│
-│      |\       │                          │
-│  /\_/  \___   │                          │
-│ ( -.-     `\  │                          │
-│  &gt; ^ &lt;  _  /  │                          │
-│ (______/ (_/  │total commits 1           │
-│    z  z       │active days 1 / 7         │
-│     z         │repos touched 1           │
-│ [SLEEPY CAT]  │busiest 09-03 · 1         │
+│       /\_/\   │01 huangyue12120 █████   1│
+│      ( o.o )  │                          │
+│       &gt; ^ &lt;   │                          │
+│      /|   |\  │                          │
+│    / |___| \  │                          │
+│   /__BOOK___\ │total commits 1           │
+│  |  01  10  | │active days 1 / 7         │
+│  `----------' │repos touched 1           │
+│ [READING CAT] │busiest 09-03 · 1         │
 ├───────────────┴──────────────────────────┤
 │summary: 1 commit across 1 repo           │
 │window: 2026-09-02 -&gt; 2026-09-08          │
