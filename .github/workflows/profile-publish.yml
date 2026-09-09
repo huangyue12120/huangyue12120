@@ -1,0 +1,49 @@
+name: Publish profile
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "draft/files/**"
+      - "scripts/update_profile.py"
+      - "tests/**"
+      - ".github/workflows/profile-publish.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-readme-writer
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify signal-card generator
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Publish template and refresh live data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p assets
+          cp draft/files/README.md README.md
+          cp draft/files/assets/*.svg assets/
+          python3 scripts/update_profile.py --readme README.md --scope all
+
+      - name: Commit rendered profile
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md assets
+          if git diff --cached --quiet; then
+            echo "Profile is already current."
+            exit 0
+          fi
+          git commit -m "chore: publish profile"
+          git push

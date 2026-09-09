@@ -1,0 +1,97 @@
+{
+  "data": {
+    "user": {
+      "weekly": {
+        "totalCommitContributions": 25,
+        "commitContributionsByRepository": [
+          {
+            "repository": {"name": "profile-lab", "nameWithOwner": "huangyue12120/profile-lab"},
+            "contributions": {
+              "nodes": [
+                {"occurredAt": "2026-09-02T10:00:00Z", "commitCount": 8},
+                {"occurredAt": "2026-09-05T10:00:00Z", "commitCount": 4}
+              ]
+            }
+          },
+          {
+            "repository": {"name": "tiny-tool", "nameWithOwner": "huangyue12120/tiny-tool"},
+            "contributions": {
+              "nodes": [
+                {"occurredAt": "2026-09-03T10:00:00Z", "commitCount": 7}
+              ]
+            }
+          },
+          {
+            "repository": {"name": "learning-log", "nameWithOwner": "huangyue12120/learning-log"},
+            "contributions": {
+              "nodes": [
+                {"occurredAt": "2026-09-04T10:00:00Z", "commitCount": 4}
+              ]
+            }
+          },
+          {
+            "repository": {"name": "dotfiles", "nameWithOwner": "huangyue12120/dotfiles"},
+            "contributions": {
+              "nodes": [
+                {"occurredAt": "2026-09-07T10:00:00Z", "commitCount": 2}
+              ]
+            }
+          }
+        ]
+      },
+      "yearly": {
+        "totalCommitContributions": 314,
+        "commitContributionsByRepository": [
+          {
+            "repository": {"name": "profile-lab", "nameWithOwner": "huangyue12120/profile-lab"},
+            "contributions": {
+              "nodes": [
+                {"occurredAt": "2026-03-10T10:00:00Z", "commitCount": 72},
+                {"occurredAt": "2026-08-10T10:00:00Z", "commitCount": 54}
+              ]
+            }
+          },
+          {
+            "repository": {"name": "tiny-tool", "nameWithOwner": "huangyue12120/tiny-tool"},
+            "contributions": {
+              "nodes": [
+                {"occurredAt": "2026-04-10T10:00:00Z", "commitCount": 63}
+              ]
+            }
+          }
+        ],
+        "contributionCalendar": {
+          "weeks": [
+            {
+              "contributionDays": [
+                {"date": "2026-09-01", "contributionCount": 1},
+                {"date": "2026-09-02", "contributionCount": 2},
+                {"date": "2026-09-03", "contributionCount": 3},
+                {"date": "2026-09-04", "contributionCount": 0}
+              ]
+            },
+            {
+              "contributionDays": [
+                {"date": "2026-09-05", "contributionCount": 4},
+                {"date": "2026-09-06", "contributionCount": 1},
+                {"date": "2026-09-07", "contributionCount": 1}
+              ]
+            }
+          ]
+        }
+      },
+      "repositories": {
+        "totalCount": 8,
+        "nodes": [
+          {"name": "profile-lab", "primaryLanguage": {"name": "Python"}},
+          {"name": "tiny-tool", "primaryLanguage": {"name": "Python"}},
+          {"name": "learning-log", "primaryLanguage": {"name": "Markdown"}},
+          {"name": "dotfiles", "primaryLanguage": {"name": "Shell"}},
+          {"name": "website", "primaryLanguage": {"name": "HTML"}},
+          {"name": "notes", "primaryLanguage": {"name": "Markdown"}},
+          {"name": "empty", "primaryLanguage": null}
+        ]
+      }
+    }
+  }
+}

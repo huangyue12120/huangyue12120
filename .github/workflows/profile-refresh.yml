@@ -1,0 +1,69 @@
+name: Refresh profile signals
+
+on:
+  schedule:
+    # 00:15 every day in Asia/Shanghai: refresh the year-to-date orbit.
+    - cron: "15 16 * * *"
+    # 00:30 every Monday in Asia/Shanghai: refresh the previous seven days.
+    - cron: "30 16 * * 0"
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: Signal card to refresh
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - weekly
+          - yearly
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-readme-writer
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Select refresh scope
+        id: refresh-scope
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+          MANUAL_SCOPE: ${{ inputs.scope }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            scope="$MANUAL_SCOPE"
+          elif [ "$EVENT_SCHEDULE" = "30 16 * * 0" ]; then
+            scope="weekly"
+          else
+            scope="yearly"
+          fi
+          echo "scope=$scope" >> "$GITHUB_OUTPUT"
+
+      - name: Refresh live data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REFRESH_SCOPE: ${{ steps.refresh-scope.outputs.scope }}
+        run: python3 scripts/update_profile.py --readme README.md --scope "$REFRESH_SCOPE"
+
+      - name: Commit refreshed signals
+        env:
+          REFRESH_SCOPE: ${{ steps.refresh-scope.outputs.scope }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          if git diff --cached --quiet; then
+            echo "Signal cards are already current."
+            exit 0
+          fi
+          git commit -m "chore: refresh $REFRESH_SCOPE profile signal"
+          git push
