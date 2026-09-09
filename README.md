@@ -58,7 +58,7 @@ The placeholders below are just placeholders — swap in real numbers once the a
 │   `--m-m--'   │repos touched 1           │
 │  [WHITE CAT]  │busiest 09-03 · 1         │
 ├───────────────┴──────────────────────────┤
-│summary: 1 commits across 1 repo          │
+│summary: 1 commit across 1 repo           │
 │window: 2026-09-02 -&gt; 2026-09-08          │
 ╰──────────────────────────────────────────╯</pre>
     </td>
