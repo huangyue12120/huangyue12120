@@ -56,6 +56,15 @@ class ProfileUpdateTests(unittest.TestCase):
         ]
         self.assertEqual(PROFILE.longest_streak(days), 2)
 
+    def test_weekly_summary_uses_singular_words(self) -> None:
+        collection = dict(self.user["weekly"])
+        collection["totalCommitContributions"] = 1
+        collection["commitContributionsByRepository"] = [
+            collection["commitContributionsByRepository"][0]
+        ]
+        card = PROFILE.weekly_card(collection, self.windows)
+        self.assertIn("summary: 1 commit across 1 repo", card)
+
 
 if __name__ == "__main__":
     unittest.main()

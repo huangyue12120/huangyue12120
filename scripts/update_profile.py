@@ -341,8 +341,11 @@ def weekly_card(collection: dict[str, Any], windows: DateWindows) -> str:
     lines.append(
         "├" + "─" * CAT_WIDTH + "┴" + "─" * REPO_WIDTH + "┤"
     )
+    commit_word = "commit" if total == 1 else "commits"
     repo_word = "repo" if len(repos) == 1 else "repos"
-    lines.append(full_row(f"summary: {total} commits across {len(repos)} {repo_word}"))
+    lines.append(
+        full_row(f"summary: {total} {commit_word} across {len(repos)} {repo_word}")
+    )
     lines.append(
         full_row(
             f"window: {windows.week_start.isoformat()} -> "
