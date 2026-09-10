@@ -44,20 +44,20 @@
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W37 --------------------+
-|2026-09-02 -&gt; 2026-09-08 · UTC+8          |
+|2026-09-03 -&gt; 2026-09-09 · UTC+8          |
 +---------------+--------------------------+
-|     /\_/\     |01 huangyue12120 #####   1|
-|    ( o.o )    |                          |
+|     /\_/\     |01 Learning-Atl… #####   9|
+|    ( o.o )    |02 huangyue12120 ###..   6|
 |     &gt; ^ &lt;     |                          |
 |    /|   |\    |                          |
 |   / |___| \   |                          |
-|  /__BOOK___\  |total commits 1           |
-| |  01  10  |  |active days 1 / 7         |
-| `----------'  |repos touched 1           |
-| [READING CAT] |busiest 09-03 · 1         |
+|  /__BOOK___\  |total commits 15          |
+| |  01  10  |  |active days 3 / 7         |
+| `----------'  |repos touched 2           |
+| [READING CAT] |busiest 09-09 · 11        |
 +---------------+--------------------------+
-|average: 1.0 commits / active day         |
-|top share: 100% · huangyue12120           |
+|average: 5.0 commits / active day         |
+|top share: 60% · Learning-Atlas           |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
@@ -66,15 +66,15 @@
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- YEARLY ORBIT · 2026 --------------------+
 |2026-01-01 -&gt; 2026-09-09 · UTC+8          |
 +------------------------------------------+
-|profile commits                         24|
-|active repositories                      2|
-|profile active days                     18|
-|longest streak                      5 days|
-|top repository         Deadcells-STS2 · 18|
-|language-tagged repos                    3|
-|language 01  Python        33% · 1        |
-|language 02  C#            33% · 1        |
-|language 03  JavaScript    33% · 1        |
+|profile commits                         69|
+|active repositories                      3|
+|profile active days                     33|
+|longest streak                     12 days|
+|top repository         Learning-Atlas · 45|
+|language-tagged repos                    4|
+|language 01  Python        50% · 2        |
+|language 02  C#            25% · 1        |
+|language 03  JavaScript    25% · 1        |
 +------------------------------------------+
 |source: GitHub contribution graph         |
 |through: 2026-09-09 · UTC+8               |
@@ -88,11 +88,11 @@
 ## TOOLBOX
 
 <!-- TOOLBOX_START -->
-Public repository languages: <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python ×1"/> <img src="https://img.shields.io/badge/c_sharp-99CC00?style=for-the-badge&logo=sharp&logoColor=white" alt="C# ×1"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white" alt="JavaScript ×1"/>
+Public repository languages: <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python ×2"/> <img src="https://img.shields.io/badge/c_sharp-99CC00?style=for-the-badge&amp;logo=sharp&amp;logoColor=white" alt="C# ×1"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ×1"/>
 
-Profile automation: <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>  <img src="https://img.shields.io/badge/graphql-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL"/>  <img src="https://img.shields.io/badge/github_actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions"/>
+Profile automation: <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python"/> <img src="https://img.shields.io/badge/graphql-E10098?style=for-the-badge&amp;logo=graphql&amp;logoColor=white" alt="GraphQL"/> <img src="https://img.shields.io/badge/github_actions-2088FF?style=for-the-badge&amp;logo=githubactions&amp;logoColor=white" alt="GitHub Actions"/>
 
-Profile format: <img src="https://img.shields.io/badge/markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" alt="Markdown"/>  <img src="https://img.shields.io/badge/svg-FFB13B?style=for-the-badge&logo=svg&logoColor=white" alt="SVG"/>
+Profile format: <img src="https://img.shields.io/badge/markdown-000000?style=for-the-badge&amp;logo=markdown&amp;logoColor=white" alt="Markdown"/> <img src="https://img.shields.io/badge/svg-FFB13B?style=for-the-badge&amp;logo=svg&amp;logoColor=white" alt="SVG"/>
 <!-- TOOLBOX_END -->
 
 ## LINKS

@@ -44,40 +44,40 @@
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- 每周信号 · W37 -------------------------+
-|2026-09-02 -&gt; 2026-09-08 · UTC+8          |
+|2026-09-03 -&gt; 2026-09-09 · UTC+8          |
 +---------------+--------------------------+
-|     /\_/\     |01 huangyue12120 #####   1|
-|    ( o.o )    |                          |
+|     /\_/\     |01 Learning-Atl… #####   9|
+|    ( o.o )    |02 huangyue12120 ###..   6|
 |     &gt; ^ &lt;     |                          |
 |    /|   |\    |                          |
 |   / |___| \   |                          |
-| /___书本___\  |总提交 1                  |
-| |  01  10  |  |活跃日 1 / 7              |
-| `----------'  |涉及仓库 1                |
-|   [读书猫]    |峰值 09-03 · 1            |
+| /___书本___\  |总提交 15                 |
+| |  01  10  |  |活跃日 3 / 7              |
+| `----------'  |涉及仓库 2                |
+|   [读书猫]    |峰值 09-09 · 11           |
 +---------------+--------------------------+
-|活跃日均：1.0 次提交                      |
-|首位占比：100% · huangyue12120            |
+|活跃日均：5.0 次提交                      |
+|首位占比：60% · Learning-Atlas            |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
     <!-- YEARLY_SIGNAL_START -->
     <td width="50%" valign="top">
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- 年度轨道 · 2026 ------------------------+
-|2026-01-01 -&gt; 2026-09-08 · UTC+8          |
+|2026-01-01 -&gt; 2026-09-09 · UTC+8          |
 +------------------------------------------+
-|贡献图提交                              19|
-|活跃仓库                                 2|
-|贡献活跃日                              17|
-|最长连续                              5 天|
-|首位仓库               Deadcells-STS2 · 18|
-|标注语言仓库                             3|
-|语言 01  Python        33% · 1            |
-|语言 02  C#            33% · 1            |
-|语言 03  JavaScript    33% · 1            |
+|贡献图提交                              69|
+|活跃仓库                                 3|
+|贡献活跃日                              33|
+|最长连续                             12 天|
+|首位仓库               Learning-Atlas · 45|
+|标注语言仓库                             4|
+|语言 01  Python        50% · 2            |
+|语言 02  C#            25% · 1            |
+|语言 03  JavaScript    25% · 1            |
 +------------------------------------------+
 |来源：GitHub 贡献图                       |
-|截至：2026-09-08 · UTC+8                  |
+|截至：2026-09-09 · UTC+8                  |
 +------------------------------------------+</pre>
     </td>
     <!-- YEARLY_SIGNAL_END -->
@@ -88,11 +88,11 @@
 ## 工具箱
 
 <!-- TOOLBOX_START -->
-公开仓库语言：<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python ×1"/> <img src="https://img.shields.io/badge/c_sharp-99CC00?style=for-the-badge&logo=sharp&logoColor=white" alt="C# ×1"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white" alt="JavaScript ×1"/>
+公开仓库语言：<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python ×2"/> <img src="https://img.shields.io/badge/c_sharp-99CC00?style=for-the-badge&amp;logo=sharp&amp;logoColor=white" alt="C# ×1"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ×1"/>
 
-本页自动化：<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>  <img src="https://img.shields.io/badge/graphql-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL"/>  <img src="https://img.shields.io/badge/github_actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions"/>
+本页自动化：<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python"/> <img src="https://img.shields.io/badge/graphql-E10098?style=for-the-badge&amp;logo=graphql&amp;logoColor=white" alt="GraphQL"/> <img src="https://img.shields.io/badge/github_actions-2088FF?style=for-the-badge&amp;logo=githubactions&amp;logoColor=white" alt="GitHub Actions"/>
 
-页面格式：<img src="https://img.shields.io/badge/markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" alt="Markdown"/>  <img src="https://img.shields.io/badge/svg-FFB13B?style=for-the-badge&logo=svg&logoColor=white" alt="SVG"/>
+页面格式：<img src="https://img.shields.io/badge/markdown-000000?style=for-the-badge&amp;logo=markdown&amp;logoColor=white" alt="Markdown"/> <img src="https://img.shields.io/badge/svg-FFB13B?style=for-the-badge&amp;logo=svg&amp;logoColor=white" alt="SVG"/>
 <!-- TOOLBOX_END -->
 
 ## 链接
