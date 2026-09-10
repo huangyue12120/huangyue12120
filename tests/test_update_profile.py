@@ -92,7 +92,7 @@ class ProfileUpdateTests(unittest.TestCase):
             self.assertNotIn(english_fragment, localized_text)
 
     def test_updating_one_scope_preserves_the_other(self) -> None:
-        source = (ROOT / "draft" / "files" / "README.md").read_text(encoding="utf-8")
+        source = (ROOT / "README.md").read_text(encoding="utf-8")
         weekly_cell = PROFILE.card_cell(
             PROFILE.weekly_card(self.user["weekly"], self.windows)
         )
@@ -212,8 +212,6 @@ class ProfileUpdateTests(unittest.TestCase):
             "profile-quest-zh.svg",
             "profile-inventory-zh.svg",
             "profile-coordinate-zh.svg",
-            "umbra-moon-zh.svg",
-            "umbra-cycle-zh.svg",
         )
         visible_text = ""
         for name in names:
@@ -222,35 +220,18 @@ class ProfileUpdateTests(unittest.TestCase):
                 root = ET.parse(path).getroot()
                 visible_text += "".join(root.itertext())
         self.assertIn("构建", visible_text)
-        self.assertIn("UMBRA 循环", visible_text)
 
-    def test_umbra_assets_are_horizontal_and_cycle_is_animated(self) -> None:
-        for name in (
-            "umbra-moon.svg",
-            "umbra-cycle.svg",
-            "umbra-moon-zh.svg",
-            "umbra-cycle-zh.svg",
-        ):
-            with self.subTest(asset=name):
-                root = ET.parse(ROOT / "assets" / name).getroot()
-                view_box = [float(value) for value in root.attrib["viewBox"].split()]
-                self.assertGreater(view_box[2], view_box[3])
+    def test_umbra_assets_only_keep_one_horizontal_mark(self) -> None:
+        names = sorted(path.name for path in (ROOT / "assets").glob("umbra-*.svg"))
+        self.assertEqual(names, ["umbra-moon.svg"])
 
-        cycle = (ROOT / "assets" / "umbra-cycle.svg").read_text(encoding="utf-8")
-        self.assertIn("<animateTransform", cycle)
-        self.assertIn("<animate attributeName=\"cx\"", cycle)
-        self.assertIn("prefers-reduced-motion", cycle)
+        root = ET.parse(ROOT / "assets" / "umbra-moon.svg").getroot()
+        view_box = [float(value) for value in root.attrib["viewBox"].split()]
+        self.assertGreater(view_box[2], view_box[3])
 
     def test_production_content_contains_no_draft_language(self) -> None:
         paths = [ROOT / "README.md", ROOT / "README_zh.md"]
         paths.extend((ROOT / "assets").glob("*.svg"))
-        paths.extend(
-            (
-                ROOT / "draft" / "files" / "README.md",
-                ROOT / "draft" / "files" / "README_zh.md",
-            )
-        )
-        paths.extend((ROOT / "draft" / "files" / "assets").glob("*.svg"))
         content = "\n".join(
             path.read_text(encoding="utf-8") for path in paths
         ).lower()
