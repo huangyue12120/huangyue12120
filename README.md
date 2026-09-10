@@ -64,11 +64,11 @@
     <!-- YEARLY_SIGNAL_START -->
     <td width="50%" valign="top">
       <pre>╭─ YEARLY ORBIT · 2026 ────────────────────╮
-│2026-01-01 -&gt; 2026-09-08 · UTC+8          │
+│2026-01-01 -&gt; 2026-09-09 · UTC+8          │
 ├──────────────────────────────────────────┤
-│profile commits                         19│
+│profile commits                         24│
 │active repositories                      2│
-│profile active days                     17│
+│profile active days                     18│
 │longest streak                      5 days│
 │top repository         Deadcells-STS2 · 18│
 │language-tagged repos                    3│
@@ -77,7 +77,7 @@
 │language 03  JavaScript    33% · 1        │
 ├──────────────────────────────────────────┤
 │source: GitHub contribution graph         │
-│through: 2026-09-08 · UTC+8               │
+│through: 2026-09-09 · UTC+8               │
 ╰──────────────────────────────────────────╯</pre>
     </td>
     <!-- YEARLY_SIGNAL_END -->
