@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-  <title id="title">Umbra horizontal mark for huangyue12120</title>
-  <desc id="desc">A crescent-shadow moon, orbital lines and the HUANGYUE UMBRA identity mark.</desc>
+  <title id="title">huangyue12120 的动态横版 UMBRA 循环</title>
+  <desc id="desc">带有移动月影、轨道和阶段信号的横版 UMBRA 身份标记。</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#030b19"/>
@@ -30,6 +30,10 @@
     <g id="sparkle" fill="#ffd36e" stroke="#fff0ad" stroke-width="2">
       <path d="M0-31L7-7L31 0L7 7L0 31L-7 7L-31 0L-7-7Z"/>
     </g>
+    <style>
+      .motion { transform-box: fill-box; transform-origin: center; }
+      @media (prefers-reduced-motion: reduce) { .motion { visibility: hidden; } }
+    </style>
   </defs>
 
   <rect width="1600" height="900" fill="url(#bg)"/>
@@ -74,12 +78,19 @@
       <circle cx="404" cy="520" r="8"/>
       <circle cx="286" cy="610" r="5"/>
     </g>
+    <circle class="motion" cx="560" cy="440" r="232" fill="#06172e" fill-opacity="0.96">
+      <animate attributeName="cx" values="560;450;340;450;560" keyTimes="0;0.25;0.5;0.75;1" dur="30s" repeatCount="indefinite"/>
+    </circle>
   </g>
   <circle cx="450" cy="440" r="232" fill="none" stroke="#dcecff" stroke-width="3" stroke-opacity="0.76"/>
 
   <g fill="none" stroke-linecap="round">
-    <path d="M190 598C263 731 602 736 774 430C822 345 742 252 625 247" stroke="#57dcff" stroke-width="4" filter="url(#glow)"/>
-    <path d="M183 498C326 642 693 639 800 442C847 355 754 324 624 365" stroke="#ffd36e" stroke-width="4" filter="url(#glow)"/>
+    <path class="motion" d="M190 598C263 731 602 736 774 430C822 345 742 252 625 247" stroke="#57dcff" stroke-width="4" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="rotate" values="0 450 440;360 450 440" dur="30s" repeatCount="indefinite"/>
+    </path>
+    <path class="motion" d="M183 498C326 642 693 639 800 442C847 355 754 324 624 365" stroke="#ffd36e" stroke-width="4" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="rotate" values="0 450 440;-360 450 440" dur="30s" repeatCount="indefinite"/>
+    </path>
   </g>
   <g fill="#73eaff" stroke="#153d62" stroke-width="5" filter="url(#glow)">
     <circle cx="192" cy="598" r="11"/>
@@ -110,9 +121,10 @@
     <circle cx="892" cy="274" r="5"/>
   </g>
 
-  <g fill="#eef7ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">
+  <g fill="#eef7ff" font-family="'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">
     <text x="1180" y="394" font-size="60" font-weight="700" letter-spacing="15">HUANGYUE</text>
     <text x="1180" y="470" font-size="32" fill="#69e4ff" letter-spacing="13">UMBRA</text>
+    <text x="1180" y="515" font-size="15" fill="#87bedb" letter-spacing="5">阶段 / 30 · 15 · 0</text>
     <path d="M1010 541H1110M1250 541H1350" fill="none" stroke="#8beaff" stroke-width="2"/>
     <use href="#sparkle" transform="translate(1180 541) scale(0.52)"/>
     <text x="1180" y="617" font-size="20" fill="#87bedb" letter-spacing="9">huangyue12120</text>

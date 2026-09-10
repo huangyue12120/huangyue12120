@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 124" role="img" aria-labelledby="title desc">
+  <title id="title">类别：程序员</title>
+  <desc id="desc">显示程序员身份的类别卡片。</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15243d"/><stop offset="1" stop-color="#0d1629"/></linearGradient></defs>
+  <rect x="1" y="1" width="558" height="122" rx="16" fill="url(#bg)" stroke="#39d5d8" stroke-opacity="0.7" stroke-width="2"/>
+  <rect x="1" y="1" width="7" height="122" rx="3" fill="#39d5d8"/>
+  <circle cx="54" cy="62" r="27" fill="#39d5d8" fill-opacity="0.13" stroke="#39d5d8" stroke-width="2"/>
+  <path d="M40 56h28M40 63h21M40 70h13" fill="none" stroke="#39d5d8" stroke-width="3" stroke-linecap="round"/>
+  <g font-family="'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <text x="98" y="35" fill="#8fa7d5" font-size="12" letter-spacing="3">类别</text>
+    <text x="98" y="72" fill="#edf3ff" font-size="22">程序员</text>
+    <text x="98" y="101" fill="#39d5d8" font-size="11" letter-spacing="1">构建 — 想法 / 代码 / 结果</text>
+  </g>
+</svg>

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the generated signal cards in the profile README."""
+"""Refresh generated signal cards in the English and Chinese profile READMEs."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 import urllib.error
 import urllib.request
 from collections import Counter, defaultdict
@@ -16,6 +17,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
 from typing import Any, Iterable
+from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
 
@@ -479,10 +481,57 @@ CAT_VARIANTS: tuple[tuple[str, tuple[str, ...]], ...] = (
     ),
 )
 
+CAT_LABELS_ZH = {
+    "BLACK CAT": "黑猫",
+    "WHITE CAT": "白猫",
+    "COW CAT": "奶牛猫",
+    "SIAMESE CAT": "暹罗猫",
+    "SLEEPY CAT": "睡猫",
+    "BOX CAT": "纸箱猫",
+    "PEEK CAT": "偷看猫",
+    "KEYBOARD CAT": "键盘猫",
+    "STRETCH CAT": "伸展猫",
+    "YAWNING CAT": "哈欠猫",
+    "FISHING CAT": "钓鱼猫",
+    "READING CAT": "读书猫",
+    "COFFEE CAT": "咖啡猫",
+    "MUSIC CAT": "音乐猫",
+    "GAMER CAT": "游戏猫",
+    "GARDEN CAT": "园艺猫",
+    "WINDOW CAT": "窗边猫",
+    "MOON CAT": "月亮猫",
+    "STAR CAT": "星星猫",
+    "ROLLING CAT": "翻滚猫",
+    "UPSIDE CAT": "倒挂猫",
+    "WAVING CAT": "挥手猫",
+    "JUMPING CAT": "跳跃猫",
+    "HIDING CAT": "躲藏猫",
+    "SNOW CAT": "雪地猫",
+    "RAIN CAT": "雨伞猫",
+    "HUNTING CAT": "捕猎猫",
+    "KNEADING CAT": "踩奶猫",
+    "ZOOMIES CAT": "疯跑猫",
+}
+
+CAT_ART_ZH_OVERRIDES = {
+    "BOX CAT": {7: "暂勿发货"},
+    "READING CAT": {5: "/___书本___\\"},
+    "COFFEE CAT": {7: "再来一杯"},
+    "WINDOW CAT": {6: "窗外？"},
+    "HIDING CAT": {6: "嘘……"},
+    "KNEADING CAT": {7: "呼噜……"},
+    "ZOOMIES CAT": {7: "冲呀！"},
+}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--readme", type=Path, default=Path("README.md"))
+    parser.add_argument(
+        "--zh-readme",
+        type=Path,
+        help="Refresh a Simplified Chinese README from the same GitHub response.",
+    )
     parser.add_argument(
         "--scope", choices=("all", "weekly", "yearly"), default="all"
     )
@@ -542,15 +591,58 @@ def extract_user(payload: dict[str, Any]) -> dict[str, Any]:
     return user
 
 
+def display_width(value: str) -> int:
+    return sum(
+        0
+        if unicodedata.combining(character)
+        else 2
+        if unicodedata.east_asian_width(character) in ("W", "F")
+        else 1
+        for character in value
+    )
+
+
+def truncate_to_width(value: str, width: int) -> str:
+    if display_width(value) <= width:
+        return value
+    target = max(0, width - display_width("…"))
+    rendered: list[str] = []
+    used = 0
+    for character in value:
+        character_width = display_width(character)
+        if used + character_width > target:
+            break
+        rendered.append(character)
+        used += character_width
+    return "".join(rendered) + "…"
+
+
 def fit(value: str, width: int, align: str = "left") -> str:
-    if len(value) > width:
-        value = value[: max(0, width - 1)] + "…"
-    return value.rjust(width) if align == "right" else value.ljust(width)
+    value = truncate_to_width(value, width)
+    padding = " " * (width - display_width(value))
+    if align == "right":
+        return padding + value
+    if align == "center":
+        left = len(padding) // 2
+        return " " * left + value + " " * (len(padding) - left)
+    return value + padding
+
+
+def localized_cat(
+    name: str, art: tuple[str, ...], locale: str
+) -> tuple[str, ...]:
+    if locale != "zh":
+        return art
+    localized = list(art[:-1])
+    for index, line in CAT_ART_ZH_OVERRIDES.get(name, {}).items():
+        localized[index] = fit(line, CAT_WIDTH, "center")
+    localized.append(fit(f"[{CAT_LABELS_ZH[name]}]", CAT_WIDTH, "center"))
+    return tuple(localized)
 
 
 def top_border(title: str) -> str:
     prefix = f"╭─ {title} "
-    return prefix + "─" * (CARD_INNER_WIDTH + 1 - len(prefix)) + "╮"
+    return prefix + "─" * (CARD_INNER_WIDTH + 1 - display_width(prefix)) + "╮"
 
 
 def full_row(value: str) -> str:
@@ -602,7 +694,9 @@ def bar(value: int, maximum: int, width: int = 5) -> str:
     return "█" * filled + "░" * (width - filled)
 
 
-def weekly_card(collection: dict[str, Any], windows: DateWindows) -> str:
+def weekly_card(
+    collection: dict[str, Any], windows: DateWindows, locale: str = "en"
+) -> str:
     repos = repository_commits(collection)
     total = int(collection.get("totalCommitContributions") or 0)
     daily = contribution_days(collection)
@@ -612,6 +706,7 @@ def weekly_card(collection: dict[str, Any], windows: DateWindows) -> str:
     cat_name, cat = CAT_VARIANTS[
         (iso_week + CAT_ROTATION_OFFSET) % len(CAT_VARIANTS)
     ]
+    cat = localized_cat(cat_name, cat, locale)
 
     maximum = repos[0][1] if repos else 0
     repo_lines: list[str] = []
@@ -623,26 +718,39 @@ def weekly_card(collection: dict[str, Any], windows: DateWindows) -> str:
                 f"{bar(count, maximum)} {count:>3}"
             )
         elif index == 0:
-            line = "-- no public commits --"
+            line = "— 本周无公开提交 —" if locale == "zh" else "-- no public commits --"
         else:
             line = ""
         repo_lines.append(fit(line, REPO_WIDTH))
 
-    busiest_text = (
-        f"busiest {busiest[0].strftime('%m-%d')} · {busiest[1]}"
-        if busiest
-        else "busiest --"
-    )
-    repo_lines.extend(
-        (
-            fit(f"total commits {total}", REPO_WIDTH),
-            fit(f"active days {active_days} / 7", REPO_WIDTH),
-            fit(f"repos touched {len(repos)}", REPO_WIDTH),
-            fit(busiest_text, REPO_WIDTH),
+    if locale == "zh":
+        busiest_text = (
+            f"峰值 {busiest[0].strftime('%m-%d')} · {busiest[1]}"
+            if busiest
+            else "峰值 —"
         )
-    )
+        metrics = (
+            f"总提交 {total}",
+            f"活跃日 {active_days} / 7",
+            f"涉及仓库 {len(repos)}",
+            busiest_text,
+        )
+    else:
+        busiest_text = (
+            f"busiest {busiest[0].strftime('%m-%d')} · {busiest[1]}"
+            if busiest
+            else "busiest --"
+        )
+        metrics = (
+            f"total commits {total}",
+            f"active days {active_days} / 7",
+            f"repos touched {len(repos)}",
+            busiest_text,
+        )
+    repo_lines.extend(fit(metric, REPO_WIDTH) for metric in metrics)
 
-    lines = [top_border(f"WEEKLY SIGNAL · W{iso_week:02}")]
+    title = "每周信号" if locale == "zh" else "WEEKLY SIGNAL"
+    lines = [top_border(f"{title} · W{iso_week:02}")]
     lines.append(
         full_row(
             f"{windows.week_start.isoformat()} -> {windows.week_end.isoformat()} · UTC+8"
@@ -659,13 +767,16 @@ def weekly_card(collection: dict[str, Any], windows: DateWindows) -> str:
     average = total / active_days if active_days else 0.0
     top_share = round(repos[0][1] / total * 100) if repos and total else 0
     top_name = repos[0][0] if repos else "--"
-    lines.append(
-        full_row(f"average: {average:.1f} commits / active day")
-    )
-    lines.append(full_row(f"top share: {top_share}% · {top_name}"))
+    if locale == "zh":
+        lines.append(full_row(f"活跃日均：{average:.1f} 次提交"))
+        lines.append(full_row(f"首位占比：{top_share}% · {top_name}"))
+    else:
+        lines.append(full_row(f"average: {average:.1f} commits / active day"))
+        lines.append(full_row(f"top share: {top_share}% · {top_name}"))
     lines.append(bottom_border())
     assert_card_shape(lines)
-    assert cat_name in cat[-1]
+    cat_label = CAT_LABELS_ZH[cat_name] if locale == "zh" else cat_name
+    assert cat_label in cat[-1]
     return "\n".join(lines)
 
 
@@ -712,24 +823,90 @@ def language_stats(repositories: dict[str, Any]) -> tuple[int, list[tuple[str, i
     return sum(counts.values()), counts.most_common(3)
 
 
-def toolbox(repositories: dict[str, Any]) -> str:
-    counts = language_counts(repositories)
-    languages = " · ".join(
-        f"`{name} ×{count}`" for name, count in counts.most_common()
+LANGUAGE_BADGES = {
+    "Python": ("python", "3776AB", "python"),
+    "C#": ("c_sharp", "99CC00", "sharp"),
+    "JavaScript": ("javascript", "F7DF1E", "javascript"),
+    "TypeScript": ("typescript", "3178C6", "typescript"),
+    "Markdown": ("markdown", "000000", "markdown"),
+    "Shell": ("shell", "4EAA25", "gnubash"),
+    "HTML": ("html5", "E34F26", "html5"),
+    "CSS": ("css3", "1572B6", "css3"),
+    "Java": ("java", "ED8B00", "openjdk"),
+    "Go": ("go", "00ADD8", "go"),
+    "Rust": ("rust", "000000", "rust"),
+    "C++": ("cplusplus", "00599C", "cplusplus"),
+}
+
+
+def language_badges(repositories: dict[str, Any]) -> str:
+    badges: list[str] = []
+    for name, count in language_counts(repositories).most_common():
+        label, color, logo = LANGUAGE_BADGES.get(
+            name, (quote(name.lower().replace(" ", "_")), "4B5563", "")
+        )
+        badges.append(shields_badge(f"{name} ×{count}", label, color, logo))
+    return " ".join(badges)
+
+
+def shields_badge(label: str, slug: str, color: str, logo: str = "") -> str:
+    query = (
+        f"style=for-the-badge&logo={logo}&logoColor=white"
+        if logo
+        else "style=for-the-badge"
     )
+    source = f"https://img.shields.io/badge/{slug}-{color}?{query}"
+    return (
+        f'<img src="{html.escape(source, quote=True)}" '
+        f'alt="{html.escape(label, quote=True)}"/>'
+    )
+
+
+def toolbox(repositories: dict[str, Any], locale: str = "en") -> str:
+    languages = language_badges(repositories)
     if not languages:
-        languages = "`no primary language reported`"
+        languages = (
+            "`未标注主要语言`"
+            if locale == "zh"
+            else "`no primary language reported`"
+        )
+    automation = " ".join(
+        (
+            shields_badge("Python", "python", "3776AB", "python"),
+            shields_badge("GraphQL", "graphql", "E10098", "graphql"),
+            shields_badge(
+                "GitHub Actions", "github_actions", "2088FF", "githubactions"
+            ),
+        )
+    )
+    formats = " ".join(
+        (
+            shields_badge("Markdown", "markdown", "000000", "markdown"),
+            shields_badge("SVG", "svg", "FFB13B", "svg"),
+        )
+    )
+    if locale == "zh":
+        return "\n\n".join(
+            (
+                f"公开仓库语言：{languages}",
+                f"本页自动化：{automation}",
+                f"页面格式：{formats}",
+            )
+        )
     return "\n\n".join(
         (
             f"Public repository languages: {languages}",
-            "Profile automation: `Python` · `GraphQL` · `GitHub Actions`",
-            "Profile format: `Markdown` · `SVG`",
+            f"Profile automation: {automation}",
+            f"Profile format: {formats}",
         )
     )
 
 
 def yearly_card(
-    collection: dict[str, Any], repositories: dict[str, Any], windows: DateWindows
+    collection: dict[str, Any],
+    repositories: dict[str, Any],
+    windows: DateWindows,
+    locale: str = "en",
 ) -> str:
     commits = int(collection.get("totalCommitContributions") or 0)
     repos = repository_commits(collection)
@@ -740,27 +917,41 @@ def yearly_card(
     language_total, languages = language_stats(repositories)
 
     def metric(label: str, value: str | int) -> str:
-        return f"{label:<23}{str(value):>19}"
+        return fit(label, 23) + fit(str(value), 19, "right")
 
-    body = [
-        metric("profile commits", commits),
-        metric("active repositories", len(repos)),
-        metric("profile active days", active_days),
-        metric("longest streak", f"{streak} days"),
-        metric("top repository", top_repo),
-        metric("language-tagged repos", language_total),
-    ]
+    if locale == "zh":
+        body = [
+            metric("贡献图提交", commits),
+            metric("活跃仓库", len(repos)),
+            metric("贡献活跃日", active_days),
+            metric("最长连续", f"{streak} 天"),
+            metric("首位仓库", top_repo),
+            metric("标注语言仓库", language_total),
+        ]
+    else:
+        body = [
+            metric("profile commits", commits),
+            metric("active repositories", len(repos)),
+            metric("profile active days", active_days),
+            metric("longest streak", f"{streak} days"),
+            metric("top repository", top_repo),
+            metric("language-tagged repos", language_total),
+        ]
     for index in range(3):
         if index < len(languages):
             language, count = languages[index]
             percentage = round(count / language_total * 100) if language_total else 0
+            label = "语言" if locale == "zh" else "language"
             body.append(
-                f"language {index + 1:02}  {fit(language, 12)} {percentage:>3}% · {count}"
+                f"{label} {index + 1:02}  {fit(language, 12)} "
+                f"{percentage:>3}% · {count}"
             )
         else:
-            body.append(f"language {index + 1:02}  --")
+            label = "语言" if locale == "zh" else "language"
+            body.append(f"{label} {index + 1:02}  --")
 
-    lines = [top_border(f"YEARLY ORBIT · {windows.as_of.year}")]
+    title = "年度轨道" if locale == "zh" else "YEARLY ORBIT"
+    lines = [top_border(f"{title} · {windows.as_of.year}")]
     lines.append(
         full_row(
             f"{windows.year_start.isoformat()} -> {windows.week_end.isoformat()} · UTC+8"
@@ -769,8 +960,19 @@ def yearly_card(
     lines.append(full_divider())
     lines.extend(full_row(item) for item in body)
     lines.append(full_divider())
-    lines.append(full_row("source: GitHub contribution graph"))
-    lines.append(full_row(f"through: {windows.week_end.isoformat()} · UTC+8"))
+    source = (
+        "来源：GitHub 贡献图"
+        if locale == "zh"
+        else "source: GitHub contribution graph"
+    )
+    through = "截至" if locale == "zh" else "through"
+    lines.append(full_row(source))
+    through_line = (
+        f"{through}：{windows.week_end.isoformat()} · UTC+8"
+        if locale == "zh"
+        else f"{through}: {windows.week_end.isoformat()} · UTC+8"
+    )
+    lines.append(full_row(through_line))
     lines.append(bottom_border())
     assert_card_shape(lines)
     return "\n".join(lines)
@@ -780,7 +982,9 @@ def assert_card_shape(lines: list[str]) -> None:
     if len(lines) != 16:
         raise ValueError(f"signal card must be 16 lines, got {len(lines)}")
     expected = CARD_INNER_WIDTH + 2
-    bad_lines = [index + 1 for index, line in enumerate(lines) if len(line) != expected]
+    bad_lines = [
+        index + 1 for index, line in enumerate(lines) if display_width(line) != expected
+    ]
     if bad_lines:
         raise ValueError(
             f"signal card lines must be {expected} characters; bad lines: {bad_lines}"
@@ -814,6 +1018,34 @@ def replace_toolbox(document: str, replacement: str) -> str:
     return pattern.sub(f"{start}\n{replacement}\n{end}", document)
 
 
+def update_document(
+    original: str,
+    user: dict[str, Any],
+    windows: DateWindows,
+    scope: str,
+    locale: str,
+) -> str:
+    updated = original
+    if scope in ("all", "weekly"):
+        updated = replace_region(
+            updated,
+            "WEEKLY",
+            card_cell(weekly_card(user["weekly"], windows, locale)),
+        )
+    if scope in ("all", "yearly"):
+        updated = replace_region(
+            updated,
+            "YEARLY",
+            card_cell(
+                yearly_card(
+                    user["yearly"], user["repositories"], windows, locale
+                )
+            ),
+        )
+        updated = replace_toolbox(updated, toolbox(user["repositories"], locale))
+    return updated
+
+
 def main() -> int:
     args = parse_args()
     windows = DateWindows.ending_before(args.as_of)
@@ -827,25 +1059,17 @@ def main() -> int:
             raise RuntimeError("GITHUB_TOKEN is required unless --fixture is used")
         user = fetch_profile_data(token, windows.graphql_variables(args.login))
 
-    original = args.readme.read_text(encoding="utf-8")
-    updated = original
-    if args.scope in ("all", "weekly"):
-        updated = replace_region(
-            updated, "WEEKLY", card_cell(weekly_card(user["weekly"], windows))
-        )
-    if args.scope in ("all", "yearly"):
-        updated = replace_region(
-            updated,
-            "YEARLY",
-            card_cell(yearly_card(user["yearly"], user["repositories"], windows)),
-        )
-        updated = replace_toolbox(updated, toolbox(user["repositories"]))
-
-    if updated != original:
-        args.readme.write_text(updated, encoding="utf-8")
-        print(f"updated {args.scope} signal data in {args.readme}")
-    else:
-        print(f"no {args.scope} signal changes in {args.readme}")
+    targets = [(args.readme, "en")]
+    if args.zh_readme:
+        targets.append((args.zh_readme, "zh"))
+    for readme, locale in targets:
+        original = readme.read_text(encoding="utf-8")
+        updated = update_document(original, user, windows, args.scope, locale)
+        if updated != original:
+            readme.write_text(updated, encoding="utf-8")
+            print(f"updated {args.scope} signal data in {readme}")
+        else:
+            print(f"no {args.scope} signal changes in {readme}")
     return 0
 
 

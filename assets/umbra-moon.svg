@@ -1,47 +1,205 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="title desc">
-  <title id="title">Umbra moon mark for huangyue12120</title>
-  <desc id="desc">A moon partially covered by an umbra, with the personal coordinate UMBRA 51430150.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 1648 928" role="img" aria-labelledby="title desc">
+  <title id="title">HUANGYUE · UMBRA</title>
+  <desc id="desc">Personal developer mark for huangyue12120: a silver-blue moon partly covered by umbra, thin orbital geometry, cyan and warm-gold accents, and the easter egg 51430150.</desc>
+
   <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#080d1c"/>
-      <stop offset="1" stop-color="#16264a"/>
+    <!-- Background -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020914"/>
+      <stop offset="0.55" stop-color="#06162a"/>
+      <stop offset="1" stop-color="#071325"/>
     </linearGradient>
-    <radialGradient id="moon" cx="35%" cy="30%" r="75%">
-      <stop offset="0" stop-color="#f4f7ff"/>
-      <stop offset="0.72" stop-color="#c7d4f1"/>
-      <stop offset="1" stop-color="#91a5d0"/>
+    <radialGradient id="leftHalo" cx="35%" cy="48%" r="48%">
+      <stop offset="0" stop-color="#12345c" stop-opacity="0.34"/>
+      <stop offset="0.62" stop-color="#0a2443" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#061325" stop-opacity="0"/>
     </radialGradient>
-    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
-      <path d="M24 0H0V24" fill="none" stroke="#9fb3df" stroke-opacity="0.08"/>
-    </pattern>
+
+    <!-- Moon -->
+    <radialGradient id="moonLight" cx="32%" cy="27%" r="88%">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="0.42" stop-color="#e8f2ff"/>
+      <stop offset="0.76" stop-color="#c5d8ee"/>
+      <stop offset="1" stop-color="#9fb9d7"/>
+    </radialGradient>
+    <linearGradient id="moonShadow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17395f"/>
+      <stop offset="0.50" stop-color="#0d2b4e"/>
+      <stop offset="1" stop-color="#06162d"/>
+    </linearGradient>
+    <clipPath id="moonClip">
+      <circle cx="538" cy="458" r="203"/>
+    </clipPath>
+
+    <!-- Soft glows, kept restrained so the mark stays SVG-like -->
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="tinyGlow" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <g id="star4">
+      <path d="M0,-24 L5.5,-5.5 L24,0 L5.5,5.5 L0,24 L-5.5,5.5 L-24,0 L-5.5,-5.5 Z"/>
+    </g>
+    <g id="starSmall">
+      <path d="M0,-13 L3,-3 L13,0 L3,3 L0,13 L-3,3 L-13,0 L-3,-3 Z"/>
+    </g>
   </defs>
 
-  <rect width="760" height="300" rx="28" fill="url(#sky)"/>
-  <rect x="16" y="16" width="728" height="268" rx="20" fill="url(#grid)"/>
-  <rect x="16" y="16" width="728" height="268" rx="20" fill="none" stroke="#8da5d4" stroke-opacity="0.35"/>
+  <!-- Background -->
+  <rect width="1648" height="928" fill="url(#bg)"/>
+  <rect width="1648" height="928" fill="url(#leftHalo)"/>
 
-  <g transform="translate(48 44)">
-    <circle cx="112" cy="102" r="82" fill="url(#moon)"/>
-    <circle cx="84" cy="76" r="10" fill="#91a5d0" fill-opacity="0.36"/>
-    <circle cx="140" cy="132" r="16" fill="#91a5d0" fill-opacity="0.26"/>
-    <circle cx="128" cy="54" r="6" fill="#91a5d0" fill-opacity="0.42"/>
-    <path d="M30 159C74 194 145 202 202 168" fill="none" stroke="#6ee7f2" stroke-width="2" stroke-opacity="0.8"/>
-    <path d="M37 40C87 -4 166 -7 207 30" fill="none" stroke="#f7c873" stroke-width="2" stroke-opacity="0.85" stroke-dasharray="4 8"/>
-    <circle cx="204" cy="30" r="5" fill="#f7c873"/>
-    <circle cx="30" cy="159" r="4" fill="#6ee7f2"/>
-    <circle cx="154" cy="92" r="82" fill="#080d1c"/>
-    <path d="M196 46A82 82 0 0 1 197 139" fill="none" stroke="#edf3ff" stroke-opacity="0.45" stroke-width="3"/>
+  <!-- Long horizontal datum line -->
+  <g fill="none" stroke="#79e4ff" stroke-linecap="round">
+    <path d="M0 458H91" stroke-width="1.7" stroke-opacity="0.72"/>
+    <path d="M136 458H273" stroke-width="1.5" stroke-dasharray="2 15" stroke-opacity="0.85"/>
+    <path d="M803 458H850" stroke-width="1.6" stroke-opacity="0.7"/>
+    <path d="M875 458H960" stroke-width="1.5" stroke-dasharray="2 15" stroke-opacity="0.75"/>
+    <path d="M1437 458H1535" stroke-width="1.5" stroke-dasharray="2 15" stroke-opacity="0.65"/>
+    <path d="M1563 458H1648" stroke-width="1.7" stroke-opacity="0.72"/>
   </g>
 
-  <g fill="#edf3ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
-    <text x="302" y="106" font-size="44" font-weight="700" letter-spacing="8">UMBRA</text>
-    <text x="307" y="143" font-size="16" fill="#9fb3df" letter-spacing="4">HUANGYUE / 51430150</text>
-    <text x="307" y="193" font-size="18" fill="#d7e2ff">build · test · understand · rebuild</text>
-    <text x="307" y="226" font-size="14" fill="#6ee7f2">curiosity → code → evidence → next orbit</text>
+  <!-- Technical guide geometry around the moon -->
+  <g fill="none" stroke-linecap="round">
+    <circle cx="538" cy="458" r="258" stroke="#75ddff" stroke-width="1.7"
+            stroke-dasharray="8 8" stroke-opacity="0.78"/>
+    <circle cx="538" cy="458" r="222" stroke="#1d4b76" stroke-width="1.1" stroke-opacity="0.48"/>
+
+    <path d="M538 153V197 M538 718V752 M272 458H299 M777 458H804"
+          stroke="#7ce8ff" stroke-width="1.5" stroke-opacity="0.83"/>
+
+    <!-- Corner brackets -->
+    <path d="M284 264H327 M284 264V310" stroke="#75e1ff" stroke-width="1.5" stroke-opacity="0.8"/>
+    <path d="M792 264H749 M792 264V310" stroke="#75e1ff" stroke-width="1.5" stroke-opacity="0.8"/>
+    <path d="M294 657H337 M294 657V613" stroke="#75e1ff" stroke-width="1.5" stroke-opacity="0.8"/>
+    <path d="M782 657H739 M782 657V613" stroke="#75e1ff" stroke-width="1.5" stroke-opacity="0.8"/>
   </g>
 
-  <g fill="#9fb3df" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11">
-    <text x="42" y="268">UMBRA MARK / HUANGYUE / 51430150</text>
-    <text x="690" y="268" text-anchor="end">5.14° · 30 · 15 · 0</text>
+  <!-- Cardinal nodes -->
+  <g filter="url(#tinyGlow)">
+    <g fill="#7fe7ff" stroke="#24577f" stroke-width="3.2">
+      <circle cx="538" cy="194" r="9.5"/>
+      <circle cx="538" cy="707" r="9.5"/>
+      <circle cx="274" cy="458" r="9.5"/>
+      <circle cx="804" cy="458" r="6.8"/>
+      <circle cx="111" cy="458" r="8.8"/>
+      <circle cx="1541" cy="458" r="8.8"/>
+    </g>
+  </g>
+
+  <!-- Orbit lines that run behind the moon -->
+  <g fill="none" stroke-linecap="round" filter="url(#tinyGlow)">
+    <ellipse cx="548" cy="451" rx="246" ry="101"
+             transform="rotate(-18 548 451)"
+             stroke="#59dcff" stroke-width="2.7" stroke-opacity="0.92"/>
+    <ellipse cx="548" cy="459" rx="252" ry="83"
+             transform="rotate(-12 548 459)"
+             stroke="#ffd06a" stroke-width="2.7" stroke-opacity="0.94"/>
+  </g>
+
+  <!-- Moon halo -->
+  <circle cx="538" cy="458" r="211" fill="none" stroke="#6fdfff" stroke-width="5" stroke-opacity="0.08"/>
+
+  <!-- Moon -->
+  <g clip-path="url(#moonClip)">
+    <circle cx="538" cy="458" r="203" fill="url(#moonLight)"/>
+
+    <!-- subdued mare/crater forms; all remain beneath the umbra -->
+    <g fill="#748fb5" fill-opacity="0.78">
+      <circle cx="390" cy="333" r="13"/>
+      <circle cx="429" cy="347" r="24"/>
+      <ellipse cx="368" cy="406" rx="21" ry="28"/>
+      <ellipse cx="412" cy="447" rx="23" ry="30"/>
+      <ellipse cx="387" cy="520" rx="20" ry="27"/>
+      <ellipse cx="430" cy="548" rx="16" ry="21"/>
+      <circle cx="464" cy="316" r="8"/>
+      <circle cx="472" cy="362" r="6"/>
+      <circle cx="461" cy="497" r="8"/>
+      <circle cx="353" cy="461" r="8"/>
+      <circle cx="361" cy="568" r="6"/>
+    </g>
+    <g fill="#58759a" fill-opacity="0.58">
+      <circle cx="404" cy="392" r="5"/>
+      <circle cx="447" cy="411" r="5"/>
+      <circle cx="384" cy="470" r="5"/>
+      <circle cx="452" cy="526" r="4"/>
+      <circle cx="401" cy="577" r="4.5"/>
+    </g>
+
+    <!-- Umbra: an offset dark disc creates the target crescent/partial-eclipse geometry -->
+    <circle cx="682" cy="458" r="210" fill="url(#moonShadow)"/>
+  </g>
+  <circle cx="538" cy="458" r="203" fill="none" stroke="#d7e8fb" stroke-width="2.5" stroke-opacity="0.86"/>
+  <circle cx="538" cy="458" r="206" fill="none" stroke="#6fdcff" stroke-width="1.0" stroke-opacity="0.28"/>
+
+  <!-- Foreground orbit segments: these restore the depth layering seen in the reference -->
+  <g fill="none" stroke-linecap="round" filter="url(#tinyGlow)">
+    <path d="M322 585 C405 630 536 627 653 586 C724 561 775 523 799 477"
+          stroke="#69ddff" stroke-width="2.7" stroke-opacity="0.98"/>
+    <path d="M343 585 C451 626 626 599 744 530 C782 508 806 483 812 455"
+          stroke="#ffd06a" stroke-width="2.8" stroke-opacity="0.98"/>
+    <path d="M691 365 C749 365 794 383 812 414"
+          stroke="#ffd06a" stroke-width="2.8" stroke-opacity="0.98"/>
+  </g>
+
+  <!-- Orbit nodes -->
+  <g filter="url(#softGlow)">
+    <circle cx="726" cy="315" r="11.5" fill="#71e2ff" stroke="#18496d" stroke-width="3.5"/>
+    <circle cx="355" cy="581" r="9.5" fill="#6ee1ff" stroke="#18496d" stroke-width="3.3"/>
+    <circle cx="754" cy="472" r="12.5" fill="#ffd16d" stroke="#7a5723" stroke-width="3.8"/>
+  </g>
+
+  <!-- Stars and sparse points -->
+  <g filter="url(#tinyGlow)">
+    <g fill="#75e6ff" stroke="#baf6ff" stroke-width="1.2">
+      <use xlink:href="#star4" transform="translate(210 347) scale(0.68)"/>
+      <use xlink:href="#starSmall" transform="translate(1535 594) scale(0.72)"/>
+    </g>
+    <g fill="#ffd16d" stroke="#ffe6a3" stroke-width="1.2">
+      <use xlink:href="#star4" transform="translate(799 247) scale(0.82)"/>
+      <use xlink:href="#starSmall" transform="translate(850 534) scale(0.95)"/>
+      <use xlink:href="#starSmall" transform="translate(338 349) scale(0.70)"/>
+      <use xlink:href="#starSmall" transform="translate(1197 513) scale(0.72)"/>
+    </g>
+  </g>
+
+  <g fill="#76e5ff" stroke="#17425f" stroke-width="2.6" opacity="0.95">
+    <circle cx="333" cy="228" r="4.2"/>
+    <circle cx="695" cy="201" r="4.8"/>
+    <circle cx="397" cy="277" r="3.0"/>
+    <circle cx="815" cy="689" r="3.3"/>
+    <circle cx="1452" cy="560" r="4.0"/>
+    <circle cx="1506" cy="338" r="3.5"/>
+  </g>
+  <g fill="#ffd16d" stroke="#6b4a1d" stroke-width="2.2">
+    <circle cx="164" cy="404" r="4.7"/>
+    <circle cx="211" cy="516" r="5.1"/>
+    <circle cx="700" cy="702" r="4.0"/>
+    <circle cx="855" cy="329" r="3.1"/>
+    <circle cx="1560" cy="408" r="6.0"/>
+  </g>
+
+  <!-- Identity block -->
+  <g text-anchor="middle" font-family="Inter, Segoe UI, Arial, Helvetica, sans-serif">
+    <text x="1197" y="425" fill="#eef7ff" font-size="48" font-weight="700" letter-spacing="13">HUANGYUE12120</text>
+    <text x="1197" y="470" fill="#69dcff" font-size="27" font-weight="500" letter-spacing="11">UMBRA</text>
+
+    <g fill="none" stroke="#86e8ff" stroke-width="1.7" stroke-linecap="round">
+      <path d="M1025 513H1158"/>
+      <path d="M1236 513H1369"/>
+    </g>
+
+    <text x="1197" y="579" fill="#69dcff" font-size="17.5" font-weight="500" letter-spacing="7.5">51430150.xyz</text>
   </g>
 </svg>

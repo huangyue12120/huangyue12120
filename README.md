@@ -1,3 +1,9 @@
+<div align="right">
+
+**English** · [简体中文](./README_zh.md)
+
+</div>
+
 <div id="slogan" align="center">
 <pre style="font-family:'Courier New',Courier,monospace;font-size:12px;line-height:1.17;white-space:pre;background-color:#000;color:#fff;padding:8px;margin:0;"><span style="color:#55FFFF">█</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF">█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">█</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF">█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">▄▀▀▄</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">█</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF">█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">▄▀▀▀</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">█</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF">█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">█</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF">█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">▄▀▀█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">▄█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">█▀▀█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">▄█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">█▀▀█</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">▄▀▀▄</span>
 <span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#55FFFF">▄▄</span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#55FFFF">▄▄</span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#55FFFF">▄</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">▀</span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF">▀▄▄</span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#55FFFF">▄▄</span><span style="color:#AAAAAA">   </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA">    </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA">    </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span><span style="color:#55FFFF">▄</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">▓</span>
@@ -5,7 +11,7 @@
 <span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#00AAAA">▄</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▄</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA"> </span><span style="color:#55FFFF;background-color:#00AAAA">░</span><span style="color:#AAAAAA">  </span><span style="color:#55FFFF;background-color:#00AAAA">░</span>
 <span style="color:#00AAAA">▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀</span><span style="color:#AAAAAA"> </span><span style="color:#00AAAA">▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀▀▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀▀</span><span style="color:#AAAAAA">   </span><span style="color:#00AAAA">▀▀</span><span style="color:#AAAAAA">   </span><span style="color:#00AAAA">▀▀▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀</span><span style="color:#AAAAAA"> </span><span style="color:#00AAAA">▀▀▀▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀</span><span style="color:#AAAAAA"> </span><span style="color:#00AAAA">▀▀▀▀</span><span style="color:#AAAAAA">  </span><span style="color:#00AAAA">▀▀</span><span style="color:#AAAAAA"> </span></pre>
 
-### _Half-baked programmer_ · _半吊子程序员_
+### _Half-baked programmer_
 
 </div>
 
@@ -25,9 +31,9 @@
 
 ## CURRENT QUEST
 
-- [ ] 把模糊想法做成可运行程序
-- [ ] 把新知识写成可复用笔记
-- [ ] 完成、记录、发布，然后进入下一轮
+- [ ] Just lay flat like a dried fish  
+- [ ] Strive to improve myself  
+- [ ] Enough money to vibe coding
 
 ---
 
@@ -82,37 +88,23 @@
 ## TOOLBOX
 
 <!-- TOOLBOX_START -->
-Public repository languages: `Python ×1` · `C# ×1` · `JavaScript ×1`
+Public repository languages: <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python ×1"/> <img src="https://img.shields.io/badge/c_sharp-99CC00?style=for-the-badge&logo=sharp&logoColor=white" alt="C# ×1"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white" alt="JavaScript ×1"/>
 
-Profile automation: `Python` · `GraphQL` · `GitHub Actions`
+Profile automation: <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>  <img src="https://img.shields.io/badge/graphql-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL"/>  <img src="https://img.shields.io/badge/github_actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions"/>
 
-Profile format: `Markdown` · `SVG`
+Profile format: <img src="https://img.shields.io/badge/markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" alt="Markdown"/>  <img src="https://img.shields.io/badge/svg-FFB13B?style=for-the-badge&logo=svg&logoColor=white" alt="SVG"/>
 <!-- TOOLBOX_END -->
 
-## LINKS / CONTACT
+## LINKS
 
-| kind | entry |
+| destination | link |
 | --- | --- |
-| GitHub | [huangyue12120](https://github.com/huangyue12120) |
-| repositories | [browse repositories](https://github.com/huangyue12120?tab=repositories) |
-| personal coordinate | `umbra51430150` |
+| GitHub profile | [huangyue12120](https://github.com/huangyue12120) |
+| Public repositories | [Browse repositories](https://github.com/huangyue12120?tab=repositories) |
 
-## UMBRA MARK
 
 <div align="center">
 
-<img src="./assets/umbra-moon.svg" alt="Umbra moon mark for huangyue12120" width="760">
-
-`UMBRA · HUANGYUE · 51430150`
-
-</div>
-
-## UMBRA CYCLE
-
-<div align="center">
-
-<img src="./assets/umbra-cycle.svg" alt="Animated Umbra phase cycle: 30, 15 and 0" width="760">
-
-`30 → 15 → 0 → 15 → 30`
+<img src="./assets/umbra-moon.svg" alt="Horizontal Umbra mark for huangyue12120" width="760">
 
 </div>

@@ -53,8 +53,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REFRESH_SCOPE: ${{ steps.refresh-scope.outputs.scope }}
         run: |
-          python3 scripts/update_profile.py --readme README.md --scope "$REFRESH_SCOPE"
+          python3 scripts/update_profile.py --readme README.md --zh-readme README_zh.md --scope "$REFRESH_SCOPE"
           cp README.md draft/files/README.md
+          cp README_zh.md draft/files/README_zh.md
 
       - name: Commit refreshed signals
         env:
@@ -62,7 +63,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md draft/files/README.md
+          git add README.md README_zh.md draft/files/README.md draft/files/README_zh.md
           if git diff --cached --quiet; then
             echo "Signal cards are already current."
             exit 0

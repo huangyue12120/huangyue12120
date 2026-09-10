@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-  <title id="title">Umbra horizontal mark for huangyue12120</title>
-  <desc id="desc">A crescent-shadow moon, orbital lines and the HUANGYUE UMBRA identity mark.</desc>
+  <title id="title">huangyue12120 的横版 UMBRA 标记</title>
+  <desc id="desc">带有月影、轨道线和 HUANGYUE UMBRA 身份标记的横版图形。</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#030b19"/>
@@ -110,7 +110,7 @@
     <circle cx="892" cy="274" r="5"/>
   </g>
 
-  <g fill="#eef7ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">
+  <g fill="#eef7ff" font-family="'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">
     <text x="1180" y="394" font-size="60" font-weight="700" letter-spacing="15">HUANGYUE</text>
     <text x="1180" y="470" font-size="32" fill="#69e4ff" letter-spacing="13">UMBRA</text>
     <path d="M1010 541H1110M1250 541H1350" fill="none" stroke="#8beaff" stroke-width="2"/>
