@@ -49,6 +49,24 @@ class ProfileUpdateTests(unittest.TestCase):
                     {PROFILE.display_width(line) for line in yearly}, {44}
                 )
 
+    def test_signal_cards_use_ascii_geometry(self) -> None:
+        unicode_geometry = r"[╭╮╰╯│├┤┬┴─█░]"
+        for locale in ("en", "zh"):
+            with self.subTest(locale=locale):
+                cards = (
+                    PROFILE.weekly_card(
+                        self.user["weekly"], self.windows, locale
+                    ),
+                    PROFILE.yearly_card(
+                        self.user["yearly"],
+                        self.user["repositories"],
+                        self.windows,
+                        locale,
+                    ),
+                )
+                for card in cards:
+                    self.assertIsNone(re.search(unicode_geometry, card))
+
     def test_every_cat_fits_the_fixed_art_slot(self) -> None:
         self.assertEqual(len(PROFILE.CAT_VARIANTS), 29)
         names = [name for name, _ in PROFILE.CAT_VARIANTS]
@@ -195,7 +213,11 @@ class ProfileUpdateTests(unittest.TestCase):
     def test_rendered_readme_cards_keep_the_fixed_dimensions(self) -> None:
         for name in ("README.md", "README_zh.md"):
             document = (ROOT / name).read_text(encoding="utf-8")
-            cards = re.findall(r"<pre>(.*?)</pre>", document, re.DOTALL)
+            cards = re.findall(
+                r'<td width="50%" valign="top">\s*<pre(?:\s[^>]*)?>(.*?)</pre>',
+                document,
+                re.DOTALL,
+            )
             self.assertEqual(len(cards), 2)
             for card in cards:
                 lines = html.unescape(card).splitlines()

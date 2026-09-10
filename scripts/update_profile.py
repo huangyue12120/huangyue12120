@@ -641,20 +641,20 @@ def localized_cat(
 
 
 def top_border(title: str) -> str:
-    prefix = f"╭─ {title} "
-    return prefix + "─" * (CARD_INNER_WIDTH + 1 - display_width(prefix)) + "╮"
+    prefix = f"+- {title} "
+    return prefix + "-" * (CARD_INNER_WIDTH + 1 - display_width(prefix)) + "+"
 
 
 def full_row(value: str) -> str:
-    return f"│{fit(value, CARD_INNER_WIDTH)}│"
+    return f"|{fit(value, CARD_INNER_WIDTH)}|"
 
 
 def full_divider() -> str:
-    return "├" + "─" * CARD_INNER_WIDTH + "┤"
+    return "+" + "-" * CARD_INNER_WIDTH + "+"
 
 
 def bottom_border() -> str:
-    return "╰" + "─" * CARD_INNER_WIDTH + "╯"
+    return "+" + "-" * CARD_INNER_WIDTH + "+"
 
 
 def contribution_rows(collection: dict[str, Any]) -> list[dict[str, Any]]:
@@ -689,9 +689,9 @@ def contribution_days(collection: dict[str, Any]) -> dict[date, int]:
 
 def bar(value: int, maximum: int, width: int = 5) -> str:
     if value <= 0 or maximum <= 0:
-        return "░" * width
+        return "." * width
     filled = max(1, round(value / maximum * width))
-    return "█" * filled + "░" * (width - filled)
+    return "#" * filled + "." * (width - filled)
 
 
 def weekly_card(
@@ -757,12 +757,12 @@ def weekly_card(
         )
     )
     lines.append(
-        "├" + "─" * CAT_WIDTH + "┬" + "─" * REPO_WIDTH + "┤"
+        "+" + "-" * CAT_WIDTH + "+" + "-" * REPO_WIDTH + "+"
     )
     for cat_line, repo_line in zip(cat, repo_lines, strict=True):
-        lines.append(f"│{fit(cat_line, CAT_WIDTH)}│{repo_line}│")
+        lines.append(f"|{fit(cat_line, CAT_WIDTH)}|{repo_line}|")
     lines.append(
-        "├" + "─" * CAT_WIDTH + "┴" + "─" * REPO_WIDTH + "┤"
+        "+" + "-" * CAT_WIDTH + "+" + "-" * REPO_WIDTH + "+"
     )
     average = total / active_days if active_days else 0.0
     top_share = round(repos[0][1] / total * 100) if repos and total else 0
@@ -995,7 +995,8 @@ def card_cell(card: str) -> str:
     safe_card = html.escape(card, quote=False)
     return (
         '    <td width="50%" valign="top">\n'
-        f"      <pre>{safe_card}</pre>\n"
+        '      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">'
+        f"{safe_card}</pre>\n"
         "    </td>"
     )
 
