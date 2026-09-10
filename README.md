@@ -47,17 +47,17 @@
 |2026-09-03 -&gt; 2026-09-09 · UTC+8          |
 +---------------+--------------------------+
 |     /\_/\     |01 Learning-Atl… #####   9|
-|    ( o.o )    |02 huangyue12120 ###..   6|
-|     &gt; ^ &lt;     |                          |
+|    ( o.o )    |02 CSA           ###..   6|
+|     &gt; ^ &lt;     |03 huangyue12120 ###..   6|
 |    /|   |\    |                          |
 |   / |___| \   |                          |
-|  /__BOOK___\  |total commits 15          |
-| |  01  10  |  |active days 3 / 7         |
-| `----------'  |repos touched 2           |
+|  /__BOOK___\  |total commits 21          |
+| |  01  10  |  |active days 5 / 7         |
+| `----------'  |repos touched 3           |
 | [READING CAT] |busiest 09-09 · 11        |
 +---------------+--------------------------+
-|average: 5.0 commits / active day         |
-|top share: 60% · Learning-Atlas           |
+|average: 4.2 commits / active day         |
+|top share: 43% · Learning-Atlas           |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
@@ -66,8 +66,8 @@
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- YEARLY ORBIT · 2026 --------------------+
 |2026-01-01 -&gt; 2026-09-09 · UTC+8          |
 +------------------------------------------+
-|profile commits                         69|
-|active repositories                      3|
+|profile commits                         75|
+|active repositories                      4|
 |profile active days                     33|
 |longest streak                     12 days|
 |top repository         Learning-Atlas · 45|
