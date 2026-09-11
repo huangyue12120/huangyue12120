@@ -41,7 +41,10 @@ class ProfileUpdateTests(unittest.TestCase):
                     locale,
                 ).splitlines()
 
+                self.assertEqual(len(weekly), 16)
                 self.assertEqual(len(weekly), len(yearly))
+                self.assertEqual(PROFILE.CAT_WIDTH, 15)
+                self.assertEqual(PROFILE.REPO_WIDTH, 26)
                 self.assertEqual(
                     {PROFILE.display_width(line) for line in weekly}, {44}
                 )
@@ -68,15 +71,107 @@ class ProfileUpdateTests(unittest.TestCase):
                     self.assertIsNone(re.search(unicode_geometry, card))
 
     def test_every_cat_fits_the_fixed_art_slot(self) -> None:
-        self.assertEqual(len(PROFILE.CAT_VARIANTS), 29)
+        added_names = {
+            "NINJA CAT",
+            "GHOST CAT",
+            "ROBOT CAT",
+            "MODEM CAT",
+            "OWL CAT",
+            "PANDA CAT",
+            "TERMINAL CAT",
+            "CATERPILLAR",
+            "BUG CAT",
+            "404 CAT",
+            "QUANTUM CAT",
+            "LIQUID CAT",
+            "ASCII CAT",
+            "ROOT CAT",
+            "VANISH CAT",
+            "BOSS CAT",
+            "TMALL CAT",
+            "MOP CAT",
+            "LUCKY CAT",
+            "MAODIE CAT",
+        }
+        self.assertEqual(len(PROFILE.CAT_VARIANTS), 49)
         names = [name for name, _ in PROFILE.CAT_VARIANTS]
         self.assertEqual(len(names), len(set(names)))
+        self.assertTrue(added_names.issubset(names))
         self.assertEqual(set(names), set(PROFILE.CAT_LABELS_ZH))
         for name, art in PROFILE.CAT_VARIANTS:
             with self.subTest(cat=name):
                 self.assertEqual(len(art), 9)
                 self.assertEqual({len(line) for line in art}, {PROFILE.CAT_WIDTH})
-                self.assertIn(name, art[-1])
+                expected_label = "??? CAT" if name == "QUANTUM CAT" else name
+                self.assertIn(expected_label, art[-1])
+
+    def test_command_cats_keep_their_required_lines(self) -> None:
+        cats = dict(PROFILE.CAT_VARIANTS)
+        terminal = cats["TERMINAL CAT"]
+        self.assertEqual(terminal[0].strip(), "$ cat cat.txt")
+        self.assertEqual(terminal[1].strip(), "meow meow")
+        self.assertEqual(terminal[2].strip(), "meow meow")
+
+        root = cats["ROOT CAT"]
+        self.assertEqual(root[6].strip(), "$ whoami")
+        self.assertEqual(root[7].strip(), "root")
+
+        not_found = "\n".join(cats["404 CAT"])
+        self.assertIn("CAT NOT", not_found)
+        self.assertIn("FOND", not_found)
+
+        liquid = cats["LIQUID CAT"]
+        self.assertIn(".----------.", liquid[0])
+        self.assertIn("|__", liquid[1])
+        self.assertIn("| )", liquid[2])
+
+        ascii_cat = cats["ASCII CAT"]
+        self.assertIn("|I AM ASCII|", ascii_cat[5])
+
+    def test_quantum_cat_is_stable_within_an_iso_week(self) -> None:
+        name, first = PROFILE.cat_for_iso_week(2026, 36, "en")
+        _, repeated = PROFILE.cat_for_iso_week(2026, 36, "en")
+        self.assertEqual(name, "QUANTUM CAT")
+        self.assertEqual(first, repeated)
+        self.assertIn("[??? CAT]", first[-1])
+        self.assertIn(
+            first[7].strip(),
+            {f"[{state}]" for state, _ in PROFILE.QUANTUM_OBSERVATIONS},
+        )
+
+        _, chinese = PROFILE.cat_for_iso_week(2026, 36, "zh")
+        self.assertIn("[??? 猫]", chinese[-1])
+        self.assertIn(
+            chinese[7].strip(),
+            {f"[{state}]" for _, state in PROFILE.QUANTUM_OBSERVATIONS},
+        )
+
+        yearly_observations = {
+            PROFILE.quantum_observation(2026, week)
+            for week in range(1, 54)
+        }
+        self.assertGreaterEqual(len(yearly_observations), 5)
+
+        for english, chinese in PROFILE.QUANTUM_OBSERVATIONS:
+            with self.subTest(observation=english):
+                self.assertLessEqual(
+                    PROFILE.display_width(f"[{english}]"), PROFILE.CAT_WIDTH
+                )
+                self.assertLessEqual(
+                    PROFILE.display_width(f"[{chinese}]"), PROFILE.CAT_WIDTH
+                )
+
+    def test_iso_week_rotation_is_stable(self) -> None:
+        for iso_week in range(1, 54):
+            with self.subTest(iso_week=iso_week):
+                first = PROFILE.cat_for_iso_week(2026, iso_week)
+                repeated = PROFILE.cat_for_iso_week(2026, iso_week)
+                expected_name = PROFILE.CAT_VARIANTS[
+                    (iso_week + PROFILE.CAT_ROTATION_OFFSET)
+                    % len(PROFILE.CAT_VARIANTS)
+                ][0]
+                self.assertEqual(first, repeated)
+                self.assertEqual(first[0], expected_name)
 
     def test_reading_cat_is_centered_as_one_pose(self) -> None:
         reading = dict(PROFILE.CAT_VARIANTS)["READING CAT"][:-1]
@@ -106,6 +201,21 @@ class ProfileUpdateTests(unittest.TestCase):
             "shhh",
             "purr",
             "vroom",
+            "boo...",
+            "meow meow",
+            "ERROR: BUG",
+            "OBSERVATION:",
+            "UNOBSERVED",
+            "cats=liquid",
+            "drip...",
+            "I AM ASCII",
+            "PHASE 2",
+            "SALE!",
+            "[CART]",
+            "BUY NOW",
+            "[LOGIN...]",
+            "dial-up...",
+            "HSSSS!",
         ):
             self.assertNotIn(english_fragment, localized_text)
 
@@ -119,7 +229,11 @@ class ProfileUpdateTests(unittest.TestCase):
         old_yearly = source.split("<!-- YEARLY_SIGNAL_START -->", 1)[1]
         new_yearly = updated.split("<!-- YEARLY_SIGNAL_START -->", 1)[1]
         self.assertEqual(old_yearly, new_yearly)
-        self.assertIn("[READING CAT]", updated)
+        iso_calendar = self.windows.week_end.isocalendar()
+        _, selected = PROFILE.cat_for_iso_week(
+            iso_calendar.year, iso_calendar.week
+        )
+        self.assertIn(selected[-1].strip(), updated)
 
     def test_longest_streak_resets_on_empty_day(self) -> None:
         days = [

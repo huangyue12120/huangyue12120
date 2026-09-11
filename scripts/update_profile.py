@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import os
@@ -114,7 +115,9 @@ class DateWindows:
         }
 
 
-def cat_variant(name: str, *pose: str) -> tuple[str, tuple[str, ...]]:
+def cat_variant(
+    name: str, *pose: str, label: str | None = None
+) -> tuple[str, tuple[str, ...]]:
     """Center a complete pose as one block inside the fixed cat canvas."""
     if len(pose) != 8:
         raise ValueError(f"{name} must contain exactly 8 pose lines")
@@ -129,7 +132,10 @@ def cat_variant(name: str, *pose: str) -> tuple[str, tuple[str, ...]]:
     centered_pose = tuple(
         (" " * left_margin + line).ljust(CAT_WIDTH) for line in pose_lines
     )
-    return name, (*centered_pose, f"[{name}]".center(CAT_WIDTH))
+    label_line = f"[{label or name}]"
+    if len(label_line) > CAT_WIDTH:
+        raise ValueError(f"{name} label exceeds {CAT_WIDTH} characters")
+    return name, (*centered_pose, label_line.center(CAT_WIDTH))
 
 
 CAT_VARIANTS: tuple[tuple[str, tuple[str, ...]], ...] = (
@@ -479,6 +485,227 @@ CAT_VARIANTS: tuple[tuple[str, tuple[str, ...]], ...] = (
         "  >>>>>>>>>",
         "   vroom!",
     ),
+    cat_variant(
+        "NINJA CAT",
+        "    /\\_/\\",
+        "   /#####\\",
+        "  ( #o#o# )",
+        "   ># ^ #<",
+        "  /|#####|\\",
+        " (_|_____|_)",
+        "   / / \\ \\",
+        "  *       *",
+    ),
+    cat_variant(
+        "GHOST CAT",
+        "    /\\_/\\",
+        "   ( o.o )",
+        "    > ^ <",
+        "   /     \\",
+        "  /       \\",
+        " /  ~   ~  \\",
+        "(____/\\____)",
+        "    boo...",
+    ),
+    cat_variant(
+        "ROBOT CAT",
+        "   .-------.",
+        "  /  o   o  \\",
+        " |     ^     |",
+        " |   \\___/   |",
+        "  \\    O    /",
+        "   |  ___  |",
+        "   | /___\\ |",
+        "   '-------'",
+    ),
+    cat_variant(
+        "MODEM CAT",
+        "  .---------.",
+        "  | FIBER   |",
+        "  |PON *    |",
+        "  |LOS .    |",
+        "  |LAN *    |",
+        "  |____o____|",
+        "     \\__/",
+        "   ==fiber==",
+    ),
+    cat_variant(
+        "OWL CAT",
+        "    .---.",
+        "   / o o \\",
+        "  |   V   |",
+        "  |  /|\\  |",
+        "  | /_|_\\ |",
+        "   \\     /",
+        "    '---'",
+        "    _/ \\_",
+    ),
+    cat_variant(
+        "PANDA CAT",
+        "    .---.",
+        "   /@   @\\",
+        "  |  o o  |",
+        "  |   ^   |",
+        "  |  '-'  |",
+        "   \\     /",
+        "   /|___|\\",
+        "    /   \\",
+    ),
+    cat_variant(
+        "TERMINAL CAT",
+        "$ cat cat.txt",
+        "meow meow",
+        "meow meow",
+        "    /\\_/\\",
+        "   ( o.o )",
+        "    > ^ <",
+        "   /|   |\\",
+        "    |___|",
+    ),
+    cat_variant(
+        "CATERPILLAR",
+        "    /\\_/\\",
+        "   ( o.o )",
+        "    > ^ <",
+        "  (o)-(o)-(o)",
+        " (o)-(o)-(o)",
+        "  (o)-(o)-(o)",
+        "       \\  \\",
+        "        '--'",
+    ),
+    cat_variant(
+        "BUG CAT",
+        "$ run cat.py",
+        "ERROR: BUG",
+        "meow meow",
+        "    /\\_/\\",
+        "   ( x.x )",
+        "    > ! <",
+        "   /|   |\\",
+        "  trace: meow",
+    ),
+    cat_variant(
+        "404 CAT",
+        "+--- 404 ---+",
+        "| CAT NOT   |",
+        "| FOND      |",
+        "+-----------+",
+        "    /\\_/\\ ?",
+        "   ( o.o )",
+        "    > ^ <",
+        "   /     \\",
+    ),
+    cat_variant(
+        "QUANTUM CAT",
+        ".-----------.",
+        "|  SEALED   |",
+        "|     ?     |",
+        "|     ?     |",
+        "|     ?     |",
+        "'-----------'",
+        " OBSERVATION:",
+        " [UNOBSERVED]",
+        label="??? CAT",
+    ),
+    cat_variant(
+        "LIQUID CAT",
+        " .----------.",
+        " |  /\\_/\\   |__",
+        " | ( o.o )  | )",
+        " |  > ^ <   | /",
+        " |~~~~~~~~~~|/",
+        " '----------'",
+        " cats=liquid",
+        "    drip...",
+    ),
+    cat_variant(
+        "ASCII CAT",
+        "    /\\_/\\",
+        "   ( o.o )",
+        "    > ^ <",
+        "   /|   |\\",
+        " /+----------+",
+        " (|I AM ASCII|",
+        " \\+----------+",
+        "    /   \\",
+    ),
+    cat_variant(
+        "ROOT CAT",
+        "    /\\_/\\",
+        "   ( o.o )",
+        "    > ^ <",
+        "   /| # |\\",
+        "  (_|___|_)",
+        "    uid=0",
+        "$ whoami",
+        "root",
+    ),
+    cat_variant(
+        "VANISH CAT",
+        "",
+        "      o o",
+        "       .",
+        "    o o",
+        "     .",
+        "  o o",
+        "   .",
+        "      ...",
+    ),
+    cat_variant(
+        "BOSS CAT",
+        "[########...]",
+        "    /\\_/\\",
+        "   /#####\\",
+        "  ( >.< )",
+        "   > ^ <",
+        "  /|   |\\",
+        " (_|___|_)",
+        "   PHASE 2",
+    ),
+    cat_variant(
+        "TMALL CAT",
+        "  .---------.",
+        "  |  SALE!  |",
+        "  |  /\\_/\\  |",
+        "  | ( o.o ) |",
+        "  |  > ^ <  |",
+        "  | [CART]  |",
+        "  '---------'",
+        "    BUY NOW",
+    ),
+    cat_variant(
+        "MOP CAT",
+        "  MOP.COM BBS",
+        "  [LOGIN...]",
+        "    /\\_/\\",
+        "   ( o.o )",
+        "    > ^ <",
+        "  /| 56K |\\",
+        "   |_____|",
+        "  dial-up...",
+    ),
+    cat_variant(
+        "LUCKY CAT",
+        "    /\\_/\\  _",
+        "   ( ^.^ ) /",
+        "    > ^ < /",
+        "   /|   |/",
+        "  (_|___|)",
+        "    | $ |",
+        "    |___|",
+        "    /   \\",
+    ),
+    cat_variant(
+        "MAODIE CAT",
+        "   .-#####-.",
+        "  /##/\\_/\\##\\",
+        " |##( >.< )##|",
+        " |###> ^ <###|",
+        " |###########|",
+        "  \\#########/",
+        "   '#######'",
+        "    HSSSS!",
+    ),
 )
 
 CAT_LABELS_ZH = {
@@ -511,6 +738,26 @@ CAT_LABELS_ZH = {
     "HUNTING CAT": "捕猎猫",
     "KNEADING CAT": "踩奶猫",
     "ZOOMIES CAT": "疯跑猫",
+    "NINJA CAT": "忍者猫",
+    "GHOST CAT": "幽灵猫",
+    "ROBOT CAT": "机器猫",
+    "MODEM CAT": "光猫",
+    "OWL CAT": "猫头鹰",
+    "PANDA CAT": "熊猫",
+    "TERMINAL CAT": "终端猫",
+    "CATERPILLAR": "猫猫虫",
+    "BUG CAT": "故障猫",
+    "404 CAT": "404猫",
+    "QUANTUM CAT": "??? 猫",
+    "LIQUID CAT": "液体猫",
+    "ASCII CAT": "ASCII 猫",
+    "ROOT CAT": "ROOT 猫",
+    "VANISH CAT": "消失猫",
+    "BOSS CAT": "BOSS 猫",
+    "TMALL CAT": "天猫",
+    "MOP CAT": "猫扑",
+    "LUCKY CAT": "招财猫",
+    "MAODIE CAT": "耄耋",
 }
 
 CAT_ART_ZH_OVERRIDES = {
@@ -521,7 +768,29 @@ CAT_ART_ZH_OVERRIDES = {
     "HIDING CAT": {6: "嘘……"},
     "KNEADING CAT": {7: "呼噜……"},
     "ZOOMIES CAT": {7: "冲呀！"},
+    "GHOST CAT": {7: "呜..."},
+    "MODEM CAT": {1: "   | 光纤    | ", 7: "==光纤=="},
+    "TERMINAL CAT": {1: "喵 喵", 2: "喵 喵"},
+    "BUG CAT": {1: "错误：BUG", 2: "喵 喵", 7: "追踪：喵"},
+    "404 CAT": {1: "| 猫未找到  |", 2: "| 404 页面  |"},
+    "QUANTUM CAT": {1: "|   密封    |", 6: "观测结果：", 7: "[未观测]"},
+    "LIQUID CAT": {6: "猫是液体", 7: "滴答……"},
+    "ASCII CAT": {5: " (|我是ASCII |"},
+    "BOSS CAT": {7: "阶段 2"},
+    "TMALL CAT": {1: "   | 促销!   | ", 5: "   | [购物车]| ", 7: "立即购买"},
+    "MOP CAT": {1: "[登录...]", 7: "拨号中..."},
+    "MAODIE CAT": {7: "哈气!!!"},
 }
+
+QUANTUM_OBSERVATIONS: tuple[tuple[str, str], ...] = (
+    ("ALIVE CAT", "活猫"),
+    ("DEAD CAT", "死猫"),
+    ("MODEM CAT", "光猫"),
+    ("OWL CAT", "猫头鹰"),
+    ("PANDA CAT", "熊猫"),
+    ("TMALL CAT", "天猫"),
+    ("EMPTY BOX", "空箱子"),
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -640,6 +909,30 @@ def localized_cat(
     return tuple(localized)
 
 
+def quantum_observation(iso_year: int, iso_week: int, locale: str = "en") -> str:
+    """Return a repeatable observation for one ISO week."""
+    seed = f"quantum-cat:{iso_year}-W{iso_week:02d}".encode("ascii")
+    digest = hashlib.sha256(seed).digest()
+    observation = QUANTUM_OBSERVATIONS[digest[0] % len(QUANTUM_OBSERVATIONS)]
+    return observation[1] if locale == "zh" else observation[0]
+
+
+def cat_for_iso_week(
+    iso_year: int, iso_week: int, locale: str = "en"
+) -> tuple[str, tuple[str, ...]]:
+    """Select and localize one cat deterministically for an ISO week."""
+    name, art = CAT_VARIANTS[
+        (iso_week + CAT_ROTATION_OFFSET) % len(CAT_VARIANTS)
+    ]
+    rendered = list(localized_cat(name, art, locale))
+    if name == "QUANTUM CAT":
+        heading = "观测结果：" if locale == "zh" else "OBSERVATION:"
+        state = quantum_observation(iso_year, iso_week, locale)
+        rendered[6] = fit(heading, CAT_WIDTH, "center")
+        rendered[7] = fit(f"[{state}]", CAT_WIDTH, "center")
+    return name, tuple(rendered)
+
+
 def top_border(title: str) -> str:
     prefix = f"+- {title} "
     return prefix + "-" * (CARD_INNER_WIDTH + 1 - display_width(prefix)) + "+"
@@ -702,11 +995,9 @@ def weekly_card(
     daily = contribution_days(collection)
     active_days = sum(1 for count in daily.values() if count)
     busiest = max(daily.items(), key=lambda item: (item[1], item[0]), default=None)
-    iso_week = windows.week_end.isocalendar().week
-    cat_name, cat = CAT_VARIANTS[
-        (iso_week + CAT_ROTATION_OFFSET) % len(CAT_VARIANTS)
-    ]
-    cat = localized_cat(cat_name, cat, locale)
+    iso_calendar = windows.week_end.isocalendar()
+    iso_week = iso_calendar.week
+    cat_name, cat = cat_for_iso_week(iso_calendar.year, iso_week, locale)
 
     maximum = repos[0][1] if repos else 0
     repo_lines: list[str] = []
@@ -775,7 +1066,10 @@ def weekly_card(
         lines.append(full_row(f"top share: {top_share}% · {top_name}"))
     lines.append(bottom_border())
     assert_card_shape(lines)
-    cat_label = CAT_LABELS_ZH[cat_name] if locale == "zh" else cat_name
+    if locale == "zh":
+        cat_label = CAT_LABELS_ZH[cat_name]
+    else:
+        cat_label = "??? CAT" if cat_name == "QUANTUM CAT" else cat_name
     assert cat_label in cat[-1]
     return "\n".join(lines)
 
