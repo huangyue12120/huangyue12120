@@ -44,20 +44,20 @@
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W37 --------------------+
-|2026-09-04 -&gt; 2026-09-10 · UTC+8          |
+|2026-09-07 -&gt; 2026-09-13 · UTC+8          |
 +---------------+--------------------------+
 | .----------.  |01 Learning-Atl… #####  12|
-| |  /\_/\   |__|02 huangyue12120 ####.  10|
-| | ( o.o )  | )|03 CSA           ##...   6|
+| |  /\_/\   |__|02 huangyue12120 #####  11|
+| | ( o.o )  | )|03 CSA           #....   2|
 | |  &gt; ^ &lt;   | /|                          |
 | |~~~~~~~~~~|/ |                          |
-| '----------'  |total commits 28          |
+| '----------'  |total commits 25          |
 | cats=liquid   |active days 5 / 7         |
 |    drip...    |repos touched 3           |
 |  [LIQUID CAT] |busiest 09-09 · 11        |
 +---------------+--------------------------+
-|average: 5.6 commits / active day         |
-|top share: 43% · Learning-Atlas           |
+|average: 5.0 commits / active day         |
+|top share: 48% · Learning-Atlas           |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
