@@ -43,21 +43,21 @@
   <tr>
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
-      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W37 --------------------+
-|2026-09-07 -&gt; 2026-09-13 · UTC+8          |
+      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W38 --------------------+
+|2026-09-14 -&gt; 2026-09-20 · UTC+8          |
 +---------------+--------------------------+
-| .----------.  |01 Learning-Atl… #####  12|
-| |  /\_/\   |__|02 huangyue12120 #####  11|
-| | ( o.o )  | )|03 CSA           #....   2|
-| |  &gt; ^ &lt;   | /|                          |
-| |~~~~~~~~~~|/ |                          |
-| '----------'  |total commits 25          |
-| cats=liquid   |active days 5 / 7         |
-|    drip...    |repos touched 3           |
-|  [LIQUID CAT] |busiest 09-09 · 11        |
+|    /\_/\      |01 Learning-Atl… #####   3|
+|   ( o.o )     |                          |
+|    &gt; ^ &lt;      |                          |
+|   /|   |\     |                          |
+| /+----------+ |                          |
+| (|I AM ASCII| |total commits 3           |
+| \+----------+ |active days 3 / 7         |
+|    /   \      |repos touched 1           |
+|  [ASCII CAT]  |busiest 09-19 · 1         |
 +---------------+--------------------------+
-|average: 5.0 commits / active day         |
-|top share: 48% · Learning-Atlas           |
+|average: 1.0 commits / active day         |
+|top share: 100% · Learning-Atlas          |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
