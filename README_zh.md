@@ -64,20 +64,20 @@
     <!-- YEARLY_SIGNAL_START -->
     <td width="50%" valign="top">
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- 年度轨道 · 2026 ------------------------+
-|2026-01-01 -&gt; 2026-09-23 · UTC+8          |
+|2026-01-01 -&gt; 2026-09-24 · UTC+8          |
 +------------------------------------------+
-|贡献图提交                              89|
-|活跃仓库                                 4|
-|贡献活跃日                              40|
+|贡献图提交                              90|
+|活跃仓库                                 5|
+|贡献活跃日                              41|
 |最长连续                             12 天|
 |首位仓库               Learning-Atlas · 53|
-|标注语言仓库                             4|
-|语言 01  Python        50% · 2            |
-|语言 02  C#            25% · 1            |
-|语言 03  JavaScript    25% · 1            |
+|标注语言仓库                             5|
+|语言 01  Python        60% · 3            |
+|语言 02  C#            20% · 1            |
+|语言 03  JavaScript    20% · 1            |
 +------------------------------------------+
 |来源：GitHub 贡献图                       |
-|截至：2026-09-23 · UTC+8                  |
+|截至：2026-09-24 · UTC+8                  |
 +------------------------------------------+</pre>
     </td>
     <!-- YEARLY_SIGNAL_END -->
@@ -88,7 +88,7 @@
 ## 工具箱
 
 <!-- TOOLBOX_START -->
-公开仓库语言：<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python ×2"/> <img src="https://img.shields.io/badge/c_sharp-99CC00?style=for-the-badge&amp;logo=sharp&amp;logoColor=white" alt="C# ×1"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ×1"/>
+公开仓库语言：<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python ×3"/> <img src="https://img.shields.io/badge/c_sharp-99CC00?style=for-the-badge&amp;logo=sharp&amp;logoColor=white" alt="C# ×1"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ×1"/>
 
 本页自动化：<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python"/> <img src="https://img.shields.io/badge/graphql-E10098?style=for-the-badge&amp;logo=graphql&amp;logoColor=white" alt="GraphQL"/> <img src="https://img.shields.io/badge/github_actions-2088FF?style=for-the-badge&amp;logo=githubactions&amp;logoColor=white" alt="GitHub Actions"/>
 

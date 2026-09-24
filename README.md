@@ -64,20 +64,20 @@
     <!-- YEARLY_SIGNAL_START -->
     <td width="50%" valign="top">
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- YEARLY ORBIT · 2026 --------------------+
-|2026-01-01 -&gt; 2026-09-23 · UTC+8          |
+|2026-01-01 -&gt; 2026-09-24 · UTC+8          |
 +------------------------------------------+
-|profile commits                         89|
-|active repositories                      4|
-|profile active days                     40|
+|profile commits                         90|
+|active repositories                      5|
+|profile active days                     41|
 |longest streak                     12 days|
 |top repository         Learning-Atlas · 53|
-|language-tagged repos                    4|
-|language 01  Python        50% · 2        |
-|language 02  C#            25% · 1        |
-|language 03  JavaScript    25% · 1        |
+|language-tagged repos                    5|
+|language 01  Python        60% · 3        |
+|language 02  C#            20% · 1        |
+|language 03  JavaScript    20% · 1        |
 +------------------------------------------+
 |source: GitHub contribution graph         |
-|through: 2026-09-23 · UTC+8               |
+|through: 2026-09-24 · UTC+8               |
 +------------------------------------------+</pre>
     </td>
     <!-- YEARLY_SIGNAL_END -->
@@ -88,7 +88,7 @@
 ## TOOLBOX
 
 <!-- TOOLBOX_START -->
-Public repository languages: <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python ×2"/> <img src="https://img.shields.io/badge/c_sharp-99CC00?style=for-the-badge&amp;logo=sharp&amp;logoColor=white" alt="C# ×1"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ×1"/>
+Public repository languages: <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python ×3"/> <img src="https://img.shields.io/badge/c_sharp-99CC00?style=for-the-badge&amp;logo=sharp&amp;logoColor=white" alt="C# ×1"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&amp;logo=javascript&amp;logoColor=white" alt="JavaScript ×1"/>
 
 Profile automation: <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python"/> <img src="https://img.shields.io/badge/graphql-E10098?style=for-the-badge&amp;logo=graphql&amp;logoColor=white" alt="GraphQL"/> <img src="https://img.shields.io/badge/github_actions-2088FF?style=for-the-badge&amp;logo=githubactions&amp;logoColor=white" alt="GitHub Actions"/>
 
