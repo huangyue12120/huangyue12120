@@ -43,21 +43,21 @@
   <tr>
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
-      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- 每周信号 · W38 -------------------------+
-|2026-09-14 -&gt; 2026-09-20 · UTC+8          |
+      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- 每周信号 · W39 -------------------------+
+|2026-09-21 -&gt; 2026-09-27 · UTC+8          |
 +---------------+--------------------------+
-|    /\_/\      |01 Learning-Atl… #####   3|
-|   ( o.o )     |                          |
-|    &gt; ^ &lt;      |                          |
-|   /|   |\     |                          |
-| /+----------+ |                          |
-| (|我是ASCII | |总提交 3                  |
-| \+----------+ |活跃日 3 / 7              |
-|    /   \      |涉及仓库 1                |
-|  [ASCII 猫]   |峰值 09-19 · 1            |
+|      /\_/\    |01 dms-trellis-… #####  26|
+|     ( o.o )   |02 Learning-Atl… ##...   9|
+|      &gt; ^ &lt;    |                          |
+|     /| # |\   |                          |
+|    (_|___|_)  |                          |
+|      uid=0    |总提交 35                 |
+|  $ whoami     |活跃日 6 / 7              |
+|  root         |涉及仓库 2                |
+|   [ROOT 猫]   |峰值 09-25 · 13           |
 +---------------+--------------------------+
-|活跃日均：1.0 次提交                      |
-|首位占比：100% · Learning-Atlas           |
+|活跃日均：5.8 次提交                      |
+|首位占比：74% · dms-trellis-card-plugin   |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->

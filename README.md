@@ -43,21 +43,21 @@
   <tr>
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
-      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W38 --------------------+
-|2026-09-14 -&gt; 2026-09-20 · UTC+8          |
+      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W39 --------------------+
+|2026-09-21 -&gt; 2026-09-27 · UTC+8          |
 +---------------+--------------------------+
-|    /\_/\      |01 Learning-Atl… #####   3|
-|   ( o.o )     |                          |
-|    &gt; ^ &lt;      |                          |
-|   /|   |\     |                          |
-| /+----------+ |                          |
-| (|I AM ASCII| |total commits 3           |
-| \+----------+ |active days 3 / 7         |
-|    /   \      |repos touched 1           |
-|  [ASCII CAT]  |busiest 09-19 · 1         |
+|      /\_/\    |01 dms-trellis-… #####  26|
+|     ( o.o )   |02 Learning-Atl… ##...   9|
+|      &gt; ^ &lt;    |                          |
+|     /| # |\   |                          |
+|    (_|___|_)  |                          |
+|      uid=0    |total commits 35          |
+|  $ whoami     |active days 6 / 7         |
+|  root         |repos touched 2           |
+|   [ROOT CAT]  |busiest 09-25 · 13        |
 +---------------+--------------------------+
-|average: 1.0 commits / active day         |
-|top share: 100% · Learning-Atlas          |
+|average: 5.8 commits / active day         |
+|top share: 74% · dms-trellis-card-plugin  |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
