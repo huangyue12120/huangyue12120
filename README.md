@@ -64,7 +64,7 @@
     <!-- YEARLY_SIGNAL_START -->
     <td width="50%" valign="top">
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- YEARLY ORBIT · 2026 --------------------+
-|2026-01-01 -&gt; 2026-09-28 · UTC+8          |
+|2026-01-01 -&gt; 2026-09-29 · UTC+8          |
 +------------------------------------------+
 |profile commits                        124|
 |active repositories                      5|
@@ -77,7 +77,7 @@
 |language 03  JavaScript    20% · 1        |
 +------------------------------------------+
 |source: GitHub contribution graph         |
-|through: 2026-09-28 · UTC+8               |
+|through: 2026-09-29 · UTC+8               |
 +------------------------------------------+</pre>
     </td>
     <!-- YEARLY_SIGNAL_END -->
