@@ -64,11 +64,11 @@
     <!-- YEARLY_SIGNAL_START -->
     <td width="50%" valign="top">
       <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- YEARLY ORBIT · 2026 --------------------+
-|2026-01-01 -&gt; 2026-10-08 · UTC+8          |
+|2026-01-01 -&gt; 2026-10-09 · UTC+8          |
 +------------------------------------------+
-|profile commits                        130|
+|profile commits                        157|
 |active repositories                      5|
-|profile active days                     47|
+|profile active days                     51|
 |longest streak                     12 days|
 |top repository         Learning-Atlas · 65|
 |language-tagged repos                    5|
@@ -77,7 +77,7 @@
 |language 03  JavaScript    20% · 1        |
 +------------------------------------------+
 |source: GitHub contribution graph         |
-|through: 2026-10-08 · UTC+8               |
+|through: 2026-10-09 · UTC+8               |
 +------------------------------------------+</pre>
     </td>
     <!-- YEARLY_SIGNAL_END -->
