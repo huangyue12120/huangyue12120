@@ -43,21 +43,21 @@
   <tr>
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
-      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W40 --------------------+
-|2026-09-28 -&gt; 2026-10-04 · UTC+8          |
+      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W41 --------------------+
+|2026-10-05 -&gt; 2026-10-11 · UTC+8          |
 +---------------+--------------------------+
-|               |01 CSA           #####   2|
-|         o o   |02 Learning-Atl… #####   2|
-|          .    |                          |
-|       o o     |                          |
-|        .      |                          |
-|     o o       |total commits 4           |
-|      .        |active days 2 / 7         |
-|         ...   |repos touched 2           |
-|  [VANISH CAT] |busiest 09-29 · 2         |
+| [########...] |01 dms-trellis-… #####  18|
+|     /\_/\     |02 Learning-Atl… #....   5|
+|    /#####\    |                          |
+|   ( &gt;.&lt; )     |                          |
+|    &gt; ^ &lt;      |                          |
+|   /|   |\     |total commits 23          |
+|  (_|___|_)    |active days 5 / 7         |
+|    PHASE 2    |repos touched 2           |
+|   [BOSS CAT]  |busiest 10-08 · 10        |
 +---------------+--------------------------+
-|average: 2.0 commits / active day         |
-|top share: 50% · CSA                      |
+|average: 4.6 commits / active day         |
+|top share: 78% · dms-trellis-card-plugin  |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
