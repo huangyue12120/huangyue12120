@@ -43,21 +43,21 @@
   <tr>
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
-      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W41 --------------------+
-|2026-10-05 -&gt; 2026-10-11 · UTC+8          |
+      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W42 --------------------+
+|2026-10-12 -&gt; 2026-10-18 · UTC+8          |
 +---------------+--------------------------+
-| [########...] |01 dms-trellis-… #####  18|
-|     /\_/\     |02 Learning-Atl… #....   5|
-|    /#####\    |                          |
-|   ( &gt;.&lt; )     |                          |
-|    &gt; ^ &lt;      |                          |
-|   /|   |\     |total commits 23          |
-|  (_|___|_)    |active days 5 / 7         |
-|    PHASE 2    |repos touched 2           |
-|   [BOSS CAT]  |busiest 10-08 · 10        |
+|   .---------. |01 Learning-Atl… #####   3|
+|   |  SALE!  | |                          |
+|   |  /\_/\  | |                          |
+|   | ( o.o ) | |                          |
+|   |  &gt; ^ &lt;  | |                          |
+|   | [CART]  | |total commits 3           |
+|   '---------' |active days 3 / 7         |
+|     BUY NOW   |repos touched 1           |
+|  [TMALL CAT]  |busiest 10-15 · 1         |
 +---------------+--------------------------+
-|average: 4.6 commits / active day         |
-|top share: 78% · dms-trellis-card-plugin  |
+|average: 1.0 commits / active day         |
+|top share: 100% · Learning-Atlas          |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
