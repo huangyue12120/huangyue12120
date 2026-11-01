@@ -43,21 +43,21 @@
   <tr>
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
-      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W43 --------------------+
-|2026-10-19 -&gt; 2026-10-25 · UTC+8          |
+      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W44 --------------------+
+|2026-10-26 -&gt; 2026-11-01 · UTC+8          |
 +---------------+--------------------------+
-|   MOP.COM BBS |01 Learning-Atl… #####   9|
-|   [LOGIN...]  |                          |
-|     /\_/\     |                          |
-|    ( o.o )    |                          |
-|     &gt; ^ &lt;     |                          |
-|   /| 56K |\   |total commits 9           |
-|    |_____|    |active days 3 / 7         |
-|   dial-up...  |repos touched 1           |
-|   [MOP CAT]   |busiest 10-23 · 5         |
+|     /\_/\  _  |-- no public commits --   |
+|    ( ^.^ ) /  |                          |
+|     &gt; ^ &lt; /   |                          |
+|    /|   |/    |                          |
+|   (_|___|)    |                          |
+|     | $ |     |total commits 0           |
+|     |___|     |active days 0 / 7         |
+|     /   \     |repos touched 0           |
+|  [LUCKY CAT]  |busiest --                |
 +---------------+--------------------------+
-|average: 3.0 commits / active day         |
-|top share: 100% · Learning-Atlas          |
+|average: 0.0 commits / active day         |
+|top share: 0% · --                        |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
