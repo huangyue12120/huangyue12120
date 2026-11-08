@@ -43,21 +43,21 @@
   <tr>
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
-      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W44 --------------------+
-|2026-10-26 -&gt; 2026-11-01 · UTC+8          |
+      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W45 --------------------+
+|2026-11-02 -&gt; 2026-11-08 · UTC+8          |
 +---------------+--------------------------+
-|     /\_/\  _  |-- no public commits --   |
-|    ( ^.^ ) /  |                          |
-|     &gt; ^ &lt; /   |                          |
-|    /|   |/    |                          |
-|   (_|___|)    |                          |
-|     | $ |     |total commits 0           |
-|     |___|     |active days 0 / 7         |
-|     /   \     |repos touched 0           |
-|  [LUCKY CAT]  |busiest --                |
+|   .-#####-.   |01 Learning-Atl… #####  21|
+|  /##/\_/\##\  |                          |
+| |##( &gt;.&lt; )##| |                          |
+| |###&gt; ^ &lt;###| |                          |
+| |###########| |                          |
+|  \#########/  |total commits 21          |
+|   '#######'   |active days 2 / 7         |
+|    HSSSS!     |repos touched 1           |
+|  [MAODIE CAT] |busiest 11-06 · 20        |
 +---------------+--------------------------+
-|average: 0.0 commits / active day         |
-|top share: 0% · --                        |
+|average: 10.5 commits / active day        |
+|top share: 100% · Learning-Atlas          |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
