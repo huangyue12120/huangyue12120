@@ -43,21 +43,21 @@
   <tr>
     <!-- WEEKLY_SIGNAL_START -->
     <td width="50%" valign="top">
-      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W46 --------------------+
-|2026-11-09 -&gt; 2026-11-15 · UTC+8          |
+      <pre style="font-family:monospace;white-space:pre;overflow-x:auto;">+- WEEKLY SIGNAL · W47 --------------------+
+|2026-11-16 -&gt; 2026-11-22 · UTC+8          |
 +---------------+--------------------------+
-|     /\_/\     |01 Learning-Atl… #####   3|
-|    /#####\    |                          |
-|   (##o#o##)   |                          |
-|   /###^###\   |                          |
-|  /#########\  |                          |
-| (###########) |total commits 3           |
-|  \###|###/    |active days 1 / 7         |
+|     /\_/\     |01 Deadcells-ST… #####   7|
+|    /     \    |                          |
+|   (  o o  )   |                          |
+|   /   ^   \   |                          |
+|  /         \  |                          |
+| (           ) |total commits 7           |
+|  \   |   /    |active days 2 / 7         |
 |   `--m-m--'   |repos touched 1           |
-|  [BLACK CAT]  |busiest 11-12 · 3         |
+|  [WHITE CAT]  |busiest 11-17 · 6         |
 +---------------+--------------------------+
-|average: 3.0 commits / active day         |
-|top share: 100% · Learning-Atlas          |
+|average: 3.5 commits / active day         |
+|top share: 100% · Deadcells-STS2          |
 +------------------------------------------+</pre>
     </td>
     <!-- WEEKLY_SIGNAL_END -->
